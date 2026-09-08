@@ -131,9 +131,10 @@ header.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);bac
       <li><b>Resource owner</b> 를 <kbd>N-stay</kbd> 로 바꿉니다. <span style="color:#dc2626">(가장 많이 실수하는 부분입니다)</span></li>
       <li><b>Expiration</b>(사용 기간)을 정합니다. 예) <kbd>1 year</kbd></li>
       <li><b>Repository access</b> 에서 <kbd>Only select repositories</kbd> 를 고르고 <kbd>Nstay</kbd> 를 선택합니다.</li>
-      <li><b>Permissions → Repository permissions</b> 에서 두 가지를 바꿉니다.<br>
-        · <kbd>Contents</kbd> → <kbd>Read and write</kbd><br>
-        · <kbd>Pages</kbd> → <kbd>Read-only</kbd> <span style="color:#64748b">(반영 상태 확인용, 없어도 저장은 됩니다)</span></li>
+      <li><b>Permissions → Repository permissions</b> 에서 두 가지만 바꿉니다. 목록이 길지만 나머지는 손대지 않아도 됩니다.<br>
+        · <kbd>Contents</kbd> → <kbd>Read and write</kbd> <span style="color:#dc2626">(필수 — Read-only 로 두면 저장이 안 됩니다)</span><br>
+        · <kbd>Pages</kbd> → <kbd>Read-only</kbd> <span style="color:#64748b">(선택 — 반영 상태 표시용)</span><br>
+        · <kbd>Metadata</kbd> 는 <kbd>Read-only</kbd> 로 <b>이미 켜져 있습니다.</b> 그대로 두세요.</span></li>
       <li>맨 아래 <b>Generate token</b> 을 누르고, 나온 <kbd>github_pat_...</kbd> 을 통째로 복사합니다.</li>
       <li>복사한 값을 아래 칸에 붙여넣고 <b>접속</b>을 누릅니다.</li>
     </ol>
@@ -260,7 +261,7 @@ async function api(path, opts = {}){
 
 function friendlyError(err){
   if(err.status === 401) return "접속 키가 올바르지 않거나 만료되었습니다. 키를 새로 발급해 주세요.";
-  if(err.status === 403) return "권한이 부족합니다. 키 발급 시 Contents 를 'Read and write' 로 설정했는지, 조직(N-stay) 승인이 끝났는지 확인해 주세요.";
+  if(err.status === 403) return "저장 권한이 없는 키입니다.\n키 발급 화면에서 Permissions → Repository permissions → Contents 를 'Read and write' 로 바꿔야 합니다.\n(Read-only 로 두면 내용을 볼 수만 있고 저장은 되지 않습니다.)\n조직(N-stay) 승인 대기 상태인 경우에도 같은 오류가 납니다.";
   if(err.status === 404) return "저장소에 접근할 수 없습니다. 키의 Resource owner 가 'N-stay' 이고 Nstay 저장소가 선택되었는지 확인해 주세요.";
   if(err.status === 409 || err.status === 422) return "다른 곳에서 먼저 수정된 내용이 있습니다. 페이지를 새로고침한 뒤 다시 수정해 주세요.";
   return err.message || "알 수 없는 오류가 발생했습니다.";
@@ -275,8 +276,17 @@ $("#loginBtn").onclick = async () => {
   $("#loginBtn").innerHTML = '<span class="spin"></span> 확인 중…';
   $("#loginErr").hidden = true;
   try {
-    const repo = await api(`/repos/${OWNER}/${REPO}`);
-    if(!repo.permissions || !repo.permissions.push) throw Object.assign(new Error("쓰기 권한이 없습니다."), {status: 403});
+    await api(`/repos/${OWNER}/${REPO}`);                       // Metadata: read
+    await api(`/repos/${OWNER}/${REPO}/contents/${FILE}?ref=${BRANCH}`)   // Contents: read
+      .catch(() => { throw Object.assign(new Error("저장소는 열리는데 안내 내용을 읽을 수 없습니다.\nPermissions → Repository permissions → Contents 가 'Read and write' 인지 확인해 주세요."), {status: 0}); });
+    // Contents: write 가 실제로 있는지 확인한다.
+    // 커밋에 연결되지 않는 임시 blob 이라 저장소 어디에도 나타나지 않는다.
+    await api(`/repos/${OWNER}/${REPO}/git/blobs`, {
+      method: "POST",
+      body: JSON.stringify({content: "permission check", encoding: "utf-8"})
+    }).catch(err => {
+      throw Object.assign(new Error(""), {status: err.status === 403 || err.status === 404 ? 403 : err.status});
+    });
     localStorage.setItem(TOKEN_KEY, token);
     await start();
   } catch(err){
@@ -313,7 +323,10 @@ async function start(){
     setDirty(false);
     buildTabs();
     renderTab();
-    setStatus("수정할 항목을 선택하세요.");
+    const pagesOk = await api(`/repos/${OWNER}/${REPO}/pages/builds/latest`).then(() => true).catch(() => false);
+    setStatus(pagesOk
+      ? "수정할 항목을 선택하세요."
+      : "수정할 항목을 선택하세요. (Pages 권한이 없어 반영 상태 표시는 생략됩니다 — 저장은 정상 동작합니다.)");
   } catch(err){
     setStatus(friendlyError(err), "err");
   }

@@ -2,7 +2,7 @@
   "version": 1,
   "config": {
     "name": "N STAY",
-    "area": "NAMPO · BUPYEONG · BUSAN",
+    "area": "NAMPO · BUPYEONG · BUSAN hello",
     "address": {
       "ko": "부산 중구 보수대로44번길 25 3층",
       "en": "3F, 25, Bosu-daero 44beon-gil, Jung-gu, Busan",
@@ -43,26 +43,7 @@
     },
     {
       "icon": "🍽️",
-      "photos": [
-        {
-          "src": "images/up/20260908-223617-6ylhp.jpg",
-          "caption": {
-            "ko": "부평깡통시장 야시장",
-            "en": "",
-            "ja": "",
-            "zh": ""
-          }
-        },
-        {
-          "src": "images/up/20260908-223837-rvglk.jpg",
-          "caption": {
-            "ko": "남포동 원조 냉채족발",
-            "en": "",
-            "ja": "",
-            "zh": ""
-          }
-        }
-      ],
+      "photos": [],
       "key": "food"
     },
     {
@@ -932,12 +913,12 @@
   },
   "foods": [
     {
-      "img": "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-224159-hoogc.jpg",
       "name": {
-        "ko": "부평깡통시장 야시장",
-        "en": "Bupyeong Night Market",
-        "ja": "富平カントン夜市場",
-        "zh": "富平罐头夜市"
+        "ko": "부평깡통시장 야시장 (PM 7:30 Open)",
+        "en": "Bupyeong Night Market (PM 7:30 Open)",
+        "ja": "富平カントン夜市場 (PM 7:30 Open)",
+        "zh": "富平罐头夜市 (PM 7:30 Open)"
       },
       "desc": {
         "ko": "유부전골, 씨앗호떡, 다채로운 글로벌 길거리 야시장 음식 (도보 3분)",
@@ -953,7 +934,7 @@
       }
     },
     {
-      "img": "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-224202-rptyf.jpg",
       "name": {
         "ko": "남포동 원조 냉채족발",
         "en": "Chilled Jokbal Alley",
@@ -974,7 +955,7 @@
       }
     },
     {
-      "img": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-225014-etvit.jpg",
       "name": {
         "ko": "부산 돼지국밥 (양산집/신창국밥)",
         "en": "Busan Pork Soup (Dwaeji Gukbap)",
@@ -995,7 +976,7 @@
       }
     },
     {
-      "img": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-225011-jukr0.jpg",
       "name": {
         "ko": "부산 원조 밀면 (할매가야밀면)",
         "en": "Halmae Gaya Milmyeon",
@@ -1016,7 +997,7 @@
       }
     },
     {
-      "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-225007-3x8xh.jpg",
       "name": {
         "ko": "자갈치 백화양곱창",
         "en": "Baekhwa Yang-gopchang",
@@ -1037,7 +1018,7 @@
       }
     },
     {
-      "img": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80",
+      "img": "images/up/20260908-225003-qslt7.jpg",
       "name": {
         "ko": "보수동 책방골목 북카페",
         "en": "Bosu Book Alley Cafes",

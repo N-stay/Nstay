@@ -1,0 +1,11 @@
+{
+  "name": "nstay-tests",
+  "private": true,
+  "description": "N STAY 안내 페이지 / 관리자 페이지 회귀 테스트",
+  "scripts": {
+    "test": "node run-all.js"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

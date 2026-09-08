@@ -18,6 +18,17 @@
 저장을 누르면 이 저장소에 커밋 1개가 만들어집니다. 잘못 바꿨더라도 커밋 기록에서
 언제든 되돌릴 수 있습니다.
 
+## 개발자 / AI 에이전트용 문서
+
+이 저장소를 수정하기 전에 반드시 읽을 것.
+
+- **[CLAUDE.md](CLAUDE.md)** — 작업 규칙. 무엇을 고치면 무엇이 깨지는지, 디자인만 안전하게
+  바꾸는 법, 섹션 추가 절차. Claude Code 는 이 파일을 자동으로 읽는다.
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — 상세 명세. 데이터 스키마 전 필드,
+  렌더링 흐름, 관리자 페이지 내부 동작, 저장 방식, 토큰 권한.
+- **[tests/](tests/)** — 회귀 테스트. `cd tests && npm install && npm test`
+  안내 페이지·관리자 페이지를 실제로 띄워 검사하고, 위 문서가 코드보다 낡지 않았는지도 검사한다.
+
 ## 파일 구조
 
 ```
@@ -25,6 +36,8 @@ index.html          안내 페이지 (내용은 아래 JSON에서 읽어옴)
 data/content.json   모든 문구·사진 경로·링크가 담긴 유일한 데이터 파일
 images/             안내 사진 (관리자 페이지에서 올리면 images/up/ 아래로 저장)
 admin/index.html    관리자 페이지
+docs/               상세 명세
+tests/              회귀 테스트
 ```
 
 `data/content.json` 의 `sections[].key` 는 화면의 특수 블록(Wi-Fi 박스, 버스 링크,

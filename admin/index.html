@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>N STAY 관리자</title>
+<style>
+:root{
+  --bg:#f1f5f9;--card:#fff;--text:#1e293b;--sub:#64748b;--primary:#0f172a;
+  --accent:#2563eb;--border:#e2e8f0;--ok:#059669;--warn:#d97706;--danger:#dc2626;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;font-size:14px}
+button{font-family:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit;font-size:14px;width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text)}
+input:focus,textarea:focus{outline:2px solid #bfdbfe;border-color:var(--accent)}
+textarea{resize:vertical;min-height:64px;line-height:1.5}
+label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:5px}
+.hint{font-size:11.5px;color:var(--sub);margin-top:4px;line-height:1.5}
+
+/* ===== 로그인 화면 ===== */
+#login{max-width:640px;margin:0 auto;padding:40px 20px 80px}
+.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.logo-box{width:46px;height:46px;background:var(--primary);color:#fff;border-radius:13px;display:grid;place-items:center;font-size:19px;font-weight:800}
+.logo-row h1{font-size:20px;font-weight:800;letter-spacing:-0.3px}
+.logo-row p{font-size:12px;color:var(--sub)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:16px}
+.panel h2{font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:7px}
+ol.steps{margin:0 0 4px 0;padding-left:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 32px;font-size:13px;color:#334155}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:22px;height:22px;background:var(--primary);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700}
+ol.steps li:last-child{padding-bottom:0}
+ol.steps b{color:var(--primary)}
+kbd{background:#f1f5f9;border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#0f172a}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--primary);color:#fff;border:0;border-radius:10px;padding:11px 16px;font-size:13.5px;font-weight:700;text-decoration:none}
+.btn:hover{opacity:.9}
+.btn.blue{background:var(--accent)}
+.btn.ghost{background:#fff;color:var(--text);border:1px solid var(--border)}
+.btn.ghost:hover{background:#f8fafc}
+.btn.sm{padding:6px 11px;font-size:12px;border-radius:8px;font-weight:600}
+.btn.danger{background:#fff;color:var(--danger);border:1px solid #fecaca}
+.btn.danger:hover{background:#fef2f2}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.wide{width:100%;padding:13px}
+.note{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.55;margin-top:12px}
+.note.blue{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+.err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;padding:11px 13px;font-size:12.5px;margin-top:12px;white-space:pre-wrap}
+
+/* ===== 편집기 ===== */
+#app{max-width:880px;margin:0 auto;padding-bottom:120px}
+header.bar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.bar-in{padding:11px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bar-in .who{font-size:11.5px;color:var(--sub);margin-right:auto}
+.bar-in .who b{color:var(--primary);font-size:13px;display:block}
+.tabs{display:flex;gap:6px;padding:0 16px 11px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:#f1f5f9;border:1px solid var(--border);color:#475569;border-radius:20px;padding:7px 14px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.tabs button.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+#pane{padding:18px 16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.card>h3{font-size:14px;font-weight:800;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px}
+.card>h3 .idx{background:#f1f5f9;color:var(--sub);border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:13px}
+.field:last-child{margin-bottom:0}
+.sub-item{border:1px solid var(--border);border-radius:11px;padding:12px;margin-bottom:10px;background:#fcfcfd}
+.sub-item .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.sub-item .row span{font-size:11px;font-weight:700;color:var(--sub)}
+.langpick{display:flex;gap:6px;margin-left:auto}
+.langpick button{background:#f1f5f9;border:1px solid var(--border);border-radius:16px;padding:5px 11px;font-size:12px;font-weight:600;color:#475569}
+.langpick button.on{background:#fff;border-color:var(--primary);color:var(--primary)}
+.section-head{font-size:12px;font-weight:800;color:var(--sub);margin:22px 0 10px;letter-spacing:.02em}
+
+/* 사진 */
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.photo{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fcfcfd;display:flex;flex-direction:column}
+.photo .thumb{aspect-ratio:16/9;background:#f1f5f9;position:relative;display:grid;place-items:center;overflow:hidden}
+.photo .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .thumb .none{font-size:11px;color:#94a3b8;text-align:center;padding:10px}
+.photo .thumb .badge{position:absolute;top:6px;left:6px;background:var(--warn);color:#fff;font-size:10px;font-weight:700;border-radius:5px;padding:2px 6px}
+.photo .meta{padding:9px;display:flex;flex-direction:column;gap:7px}
+.photo .acts{display:flex;gap:6px}
+.photo .acts .btn{flex:1}
+.dropzone{border:2px dashed var(--border);border-radius:12px;display:grid;place-items:center;min-height:118px;color:var(--sub);font-size:12px;text-align:center;padding:12px;background:#fcfcfd}
+.dropzone.over{border-color:var(--accent);background:#eff6ff;color:var(--accent)}
+.photo.over .thumb{outline:2px solid var(--accent);outline-offset:-2px}
+
+/* 저장 바 */
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-top:1px solid var(--border);padding:11px 16px}
+.savebar-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.savebar .status{font-size:12px;color:var(--sub);margin-right:auto;line-height:1.4}
+.savebar .status.dirty{color:var(--warn);font-weight:700}
+.savebar .status.ok{color:var(--ok);font-weight:700}
+.savebar .status.err{color:var(--danger);font-weight:700}
+
+/* 미리보기 */
+#modal{position:fixed;inset:0;z-index:100;background:rgba(15,23,42,.6);display:none;flex-direction:column;padding:14px}
+#modal.on{display:flex}
+#modal .top{display:flex;align-items:center;gap:10px;padding-bottom:10px;color:#fff}
+#modal .top b{margin-right:auto;font-size:13px}
+#modal iframe{flex:1;width:100%;border:0;border-radius:14px;background:#fff}
+.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;display:inline-block;animation:sp .7s linear infinite}
+.btn.ghost .spin{border-color:rgba(15,23,42,.25);border-top-color:var(--primary)}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+@media(max-width:560px){
+  .grid2{grid-template-columns:1fr}
+  .photos{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== 로그인 ===================== -->
+<div id="login">
+  <div class="logo-row">
+    <div class="logo-box">N</div>
+    <div>
+      <h1>N STAY 관리자</h1>
+      <p>안내 페이지 내용과 사진을 수정합니다</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>🔑 처음이신가요? 접속 키 만들기</h2>
+    <p class="hint" style="margin:-6px 0 14px">아래 순서대로 한 번만 만들어두면, 다음부터는 이 화면 없이 바로 열립니다.</p>
+    <ol class="steps">
+      <li><b>키 발급 페이지 열기</b> 버튼을 누릅니다. (GitHub 로그인이 안 되어 있으면 로그인 먼저)</li>
+      <li><b>Token name</b> 에 아무 이름이나 적습니다. 예) <kbd>N STAY 관리</kbd></li>
+      <li><b>Resource owner</b> 를 <kbd>N-stay</kbd> 로 바꿉니다. <span style="color:#dc2626">(가장 많이 실수하는 부분입니다)</span></li>
+      <li><b>Expiration</b>(사용 기간)을 정합니다. 예) <kbd>1 year</kbd></li>
+      <li><b>Repository access</b> 에서 <kbd>Only select repositories</kbd> 를 고르고 <kbd>Nstay</kbd> 를 선택합니다.</li>
+      <li><b>Permissions → Repository permissions</b> 에서 두 가지를 바꿉니다.<br>
+        · <kbd>Contents</kbd> → <kbd>Read and write</kbd><br>
+        · <kbd>Pages</kbd> → <kbd>Read-only</kbd> <span style="color:#64748b">(반영 상태 확인용, 없어도 저장은 됩니다)</span></li>
+      <li>맨 아래 <b>Generate token</b> 을 누르고, 나온 <kbd>github_pat_...</kbd> 을 통째로 복사합니다.</li>
+      <li>복사한 값을 아래 칸에 붙여넣고 <b>접속</b>을 누릅니다.</li>
+    </ol>
+    <div style="margin-top:16px">
+      <a class="btn blue" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">🔗 키 발급 페이지 열기</a>
+    </div>
+    <div class="note">
+      <b>승인 대기(pending)라고 나온다면?</b><br>
+      조직 설정에서 승인해야 합니다. <a href="https://github.com/organizations/N-stay/settings/personal-access-token-requests" target="_blank" rel="noopener">N-stay 조직 → Pending requests</a> 에서 방금 만든 키를 승인한 뒤 다시 시도하세요.
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>🔓 접속</h2>
+    <div class="field">
+      <label for="tok">접속 키 (Personal access token)</label>
+      <input id="tok" type="password" placeholder="github_pat_... 붙여넣기" autocomplete="off" spellcheck="false">
+      <div class="hint">이 키는 이 브라우저에만 저장되고 다른 곳으로 전송되지 않습니다. 공용 PC에서는 사용 후 <b>연결 해제</b>를 눌러주세요.</div>
+    </div>
+    <button class="btn wide" id="loginBtn">접속</button>
+    <div id="loginErr" class="err" hidden></div>
+  </div>
+</div>
+
+<!-- ===================== 편집기 ===================== -->
+<div id="app" hidden>
+  <header class="bar">
+    <div class="bar-in">
+      <div class="who"><b id="whoName">N STAY 관리자</b><span id="whoUser"></span></div>
+      <a class="btn ghost sm" href="https://n-stay.github.io/Nstay/" target="_blank" rel="noopener">🌐 사이트 보기</a>
+      <button class="btn ghost sm" id="logoutBtn">연결 해제</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </header>
+  <main id="pane"></main>
+</div>
+
+<div class="savebar" id="savebar" hidden>
+  <div class="savebar-in">
+    <div class="status" id="status">불러오는 중…</div>
+    <button class="btn ghost sm" id="revertBtn">되돌리기</button>
+    <button class="btn ghost sm" id="previewBtn">👁 미리보기</button>
+    <button class="btn" id="saveBtn">저장하기</button>
+  </div>
+</div>
+
+<div id="modal">
+  <div class="top">
+    <b>미리보기 — 저장하기 전 초안입니다</b>
+    <button class="btn ghost sm" id="modalClose">닫기</button>
+  </div>
+  <iframe id="pv" title="미리보기"></iframe>
+</div>
+
+<script>
+/* =========================================================
+   N STAY 관리자 페이지
+   - 저장 = GitHub 저장소에 커밋 1개 생성 (Git Data API)
+   - 별도 서버·데이터베이스 없음. 저장소가 곧 저장 공간.
+   ========================================================= */
+const OWNER = "N-stay", REPO = "Nstay", BRANCH = "main";
+const FILE = "data/content.json";
+const SITE = "https://n-stay.github.io/Nstay/";
+const TOKEN_KEY = "nstay_admin_token";
+const LANGS = [["ko","🇰🇷 한국어"],["en","🇺🇸 English"],["ja","🇯🇵 日本語"],["zh","🇨🇳 中文"]];
+
+let token = localStorage.getItem(TOKEN_KEY) || "";
+let original = null;   // 서버에서 받은 원본 (되돌리기용)
+let draft = null;      // 편집 중인 사본
+let pending = {};      // 아직 저장 안 된 사진: { "images/xxx.jpg": dataURL }
+let isDirty = false;
+let curTab = "basic";
+let curLang = "ko";
+
+const $ = s => document.querySelector(s);
+const pane = $("#pane");
+
+/* ---------- 유틸 ---------- */
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const clone = o => JSON.parse(JSON.stringify(o));
+const getPath = (o, p) => p.split(".").reduce((x, k) => (x == null ? undefined : x[k]), o);
+function setPath(o, p, v){
+  const ks = p.split("."); let x = o;
+  for(let i = 0; i < ks.length - 1; i++) x = x[ks[i]];
+  x[ks[ks.length - 1]] = v;
+}
+function b64encode(str){
+  const bytes = new TextEncoder().encode(str);
+  let bin = "";
+  for(let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+function b64decode(b64){
+  const bin = atob(b64.replace(/\s/g, ""));
+  const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}
+function stamp(){
+  const d = new Date(), p = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+}
+
+/* ---------- GitHub API ---------- */
+async function api(path, opts = {}){
+  const res = await fetch("https://api.github.com" + path, {
+    ...opts,
+    headers: {
+      "Authorization": "Bearer " + token,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(opts.body ? {"Content-Type": "application/json"} : {}),
+      ...(opts.headers || {})
+    }
+  });
+  if(!res.ok){
+    let msg = "";
+    try { msg = (await res.json()).message || ""; } catch(e){}
+    const e = new Error(msg || ("HTTP " + res.status));
+    e.status = res.status;
+    throw e;
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+function friendlyError(err){
+  if(err.status === 401) return "접속 키가 올바르지 않거나 만료되었습니다. 키를 새로 발급해 주세요.";
+  if(err.status === 403) return "권한이 부족합니다. 키 발급 시 Contents 를 'Read and write' 로 설정했는지, 조직(N-stay) 승인이 끝났는지 확인해 주세요.";
+  if(err.status === 404) return "저장소에 접근할 수 없습니다. 키의 Resource owner 가 'N-stay' 이고 Nstay 저장소가 선택되었는지 확인해 주세요.";
+  if(err.status === 409 || err.status === 422) return "다른 곳에서 먼저 수정된 내용이 있습니다. 페이지를 새로고침한 뒤 다시 수정해 주세요.";
+  return err.message || "알 수 없는 오류가 발생했습니다.";
+}
+
+/* ---------- 로그인 ---------- */
+$("#loginBtn").onclick = async () => {
+  const v = $("#tok").value.trim();
+  if(!v) return;
+  token = v;
+  $("#loginBtn").disabled = true;
+  $("#loginBtn").innerHTML = '<span class="spin"></span> 확인 중…';
+  $("#loginErr").hidden = true;
+  try {
+    const repo = await api(`/repos/${OWNER}/${REPO}`);
+    if(!repo.permissions || !repo.permissions.push) throw Object.assign(new Error("쓰기 권한이 없습니다."), {status: 403});
+    localStorage.setItem(TOKEN_KEY, token);
+    await start();
+  } catch(err){
+    token = "";
+    $("#loginErr").hidden = false;
+    $("#loginErr").textContent = friendlyError(err);
+  } finally {
+    $("#loginBtn").disabled = false;
+    $("#loginBtn").textContent = "접속";
+  }
+};
+$("#tok").addEventListener("keydown", e => { if(e.key === "Enter") $("#loginBtn").click(); });
+
+$("#logoutBtn").onclick = () => {
+  if(isDirty && !confirm("저장하지 않은 수정 내용이 있습니다. 그래도 연결을 해제할까요?")) return;
+  localStorage.removeItem(TOKEN_KEY);
+  location.reload();
+};
+
+/* ---------- 시작 ---------- */
+async function start(){
+  $("#login").hidden = true;
+  $("#app").hidden = false;
+  $("#savebar").hidden = false;
+  setStatus("불러오는 중…");
+  try {
+    const me = await api("/user").catch(() => null);
+    if(me) $("#whoUser").textContent = "@" + me.login;
+    const file = await api(`/repos/${OWNER}/${REPO}/contents/${FILE}?ref=${BRANCH}`);
+    original = JSON.parse(b64decode(file.content));
+    if(!original.config.laundry) original.config.laundry = {address: "", mapUrl: ""};
+    draft = clone(original);
+    pending = {};
+    setDirty(false);
+    buildTabs();
+    renderTab();
+    setStatus("수정할 항목을 선택하세요.");
+  } catch(err){
+    setStatus(friendlyError(err), "err");
+  }
+}
+
+/* ---------- 상태 표시 ---------- */
+function setStatus(msg, kind){
+  const el = $("#status");
+  el.className = "status" + (kind ? " " + kind : "");
+  el.innerHTML = msg;
+}
+function setDirty(v){
+  isDirty = v;
+  $("#saveBtn").disabled = !v;
+  $("#revertBtn").disabled = !v;
+  if(v) setStatus("저장하지 않은 수정이 있습니다.", "dirty");
+}
+window.addEventListener("beforeunload", e => {
+  if(isDirty){ e.preventDefault(); e.returnValue = ""; }
+});
+
+/* ---------- 탭 ---------- */
+const TABS = [
+  ["basic",  "🏠 기본 정보"],
+  ["photos", "📷 사진"],
+  ["text",   "📝 안내 문구"],
+  ["cards",  "🍽️ 맛집 & 명소"]
+];
+function buildTabs(){
+  $("#tabs").innerHTML = TABS.map(([k, l]) =>
+    `<button data-tab="${k}" class="${k === curTab ? "on" : ""}">${l}</button>`).join("");
+  $("#tabs").querySelectorAll("[data-tab]").forEach(b => b.onclick = () => {
+    curTab = b.dataset.tab;
+    buildTabs(); renderTab();
+    window.scrollTo({top: 0});
+  });
+}
+
+function langBar(){
+  return `<div class="langpick">${LANGS.map(([k, l]) =>
+    `<button data-lang="${k}" class="${k === curLang ? "on" : ""}">${l}</button>`).join("")}</div>`;
+}
+
+function renderTab(){
+  if(!draft) return;
+  if(curTab === "basic")  pane.innerHTML = viewBasic();
+  if(curTab === "photos") pane.innerHTML = viewPhotos();
+  if(curTab === "text")   pane.innerHTML = viewText();
+  if(curTab === "cards")  pane.innerHTML = viewCards();
+  pane.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => { curLang = b.dataset.lang; renderTab(); });
+  wirePhotoDrops();
+}
+
+/* ---------- 1. 기본 정보 ---------- */
+function inp(label, path, hint, type){
+  return `<div class="field">
+    <label>${esc(label)}</label>
+    <input type="${type || "text"}" data-path="${path}" value="${esc(getPath(draft, path))}">
+    ${hint ? `<div class="hint">${hint}</div>` : ""}
+  </div>`;
+}
+function viewBasic(){
+  return `
+  <div class="card">
+    <h3>🏠 숙소 기본 정보</h3>
+    <div class="grid2">
+      ${inp("숙소 이름", "config.name", "페이지 상단 제목과 로고에 쓰입니다.")}
+      ${inp("지역 표기", "config.area", "예) NAMPO · BUPYEONG · BUSAN")}
+      ${inp("체크인 시간", "config.checkIn")}
+      ${inp("체크아웃 시간", "config.checkOut", "안내 문구의 체크아웃 설명은 따로 수정해야 합니다.")}
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📶 Wi-Fi</h3>
+    <div class="grid2">
+      ${inp("Wi-Fi 이름 (SSID)", "config.wifiName")}
+      ${inp("Wi-Fi 비밀번호", "config.wifiPassword", "게스트에게 그대로 보이니 오타를 꼭 확인하세요.")}
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📍 주소</h3>
+    <p class="hint" style="margin:-8px 0 12px">배달 주문 안내와 지도 안내에 함께 쓰입니다.</p>
+    <div class="grid2">
+      ${inp("한국어", "config.address.ko")}
+      ${inp("English", "config.address.en")}
+      ${inp("日本語", "config.address.ja")}
+      ${inp("中文", "config.address.zh")}
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🧺 코인세탁방</h3>
+    <p class="hint" style="margin:-8px 0 12px">세탁 안내 섹션에 주소와 지도 버튼으로 표시됩니다. 주소를 바꾸면 아래 지도 링크도 함께 바꿔주세요.</p>
+    ${inp("세탁방 주소", "config.laundry.address")}
+    ${inp("세탁방 지도 링크", "config.laundry.mapUrl", '주소를 그대로 쓰려면 <kbd>https://www.google.com/maps/search/?api=1&amp;query=주소</kbd> 형태로 넣으면 됩니다.')}
+    <button class="btn ghost sm" data-act="laundrymap" style="margin-top:2px">주소로 지도 링크 자동 만들기</button>
+  </div>
+
+  <div class="card">
+    <h3>🔗 링크</h3>
+    ${inp("지도 링크 (길찾기 버튼)", "config.mapUrl")}
+    ${inp("Airbnb 메시지 링크", "config.airbnbUrl", "비워두면 맨 아래 Airbnb 버튼이 표시되지 않습니다.")}
+    ${inp("배달의민족 링크", "config.baeminUrl")}
+    <div class="grid2">
+      ${inp("보수사거리 정류장 지도", "config.busStops.bosu")}
+      ${inp("부평시장 정류장 지도", "config.busStops.bupyeong")}
+    </div>
+  </div>`;
+}
+
+/* ---------- 2. 사진 ---------- */
+function photoSrc(src){
+  if(!src) return "";
+  if(pending[src]) return pending[src];
+  if(/^https?:/.test(src)) return src;
+  return "../" + src;
+}
+function photoBox(src, opts){
+  const isNew = !!pending[src];
+  const has = !!src;
+  return `<div class="thumb" data-drop="${opts.drop}">
+    ${has ? `<img src="${esc(photoSrc(src))}" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+             <div class="none" style="display:none">사진 파일이 아직 없습니다.<br>아래 버튼으로 올려주세요.</div>`
+          : `<div class="none">사진 없음<br>여기에 끌어다 놓거나<br>아래 버튼을 누르세요</div>`}
+    ${isNew ? `<span class="badge">저장 대기</span>` : ""}
+  </div>`;
+}
+function viewPhotos(){
+  const secs = draft.text.ko.sections;
+  let html = `<div class="note blue">사진을 올리면 자동으로 크기가 줄어듭니다(가로·세로 최대 1600px). 휴대폰으로 찍은 사진을 그대로 올리셔도 됩니다.<br>사진은 <b>저장하기</b>를 눌러야 실제로 반영됩니다.</div>`;
+  html += `<div class="card"><h3>📷 사진 설명 언어 ${langBar()}</h3>
+    <p class="hint" style="margin-top:-4px">사진 자체는 모든 언어에 공통이고, 사진 아래 설명글만 언어별로 저장됩니다.</p></div>`;
+
+  html += `<div class="section-head">안내 사진 — 섹션마다 원하는 만큼 넣을 수 있습니다</div>`;
+  html += draft.sections.map((s, i) => `
+    <div class="card">
+      <h3><span class="idx">${i + 1}</span> ${esc(s.icon)} ${esc(secs[i].title)}</h3>
+      <div class="photos">
+        ${(s.photos || []).map((p, j) => `
+          <div class="photo">
+            ${photoBox(p.src, {drop: `sec:${i}:${j}`})}
+            <div class="meta">
+              <input type="text" placeholder="사진 설명" data-path="sections.${i}.photos.${j}.caption.${curLang}" value="${esc(getPath(draft, `sections.${i}.photos.${j}.caption.${curLang}`) || "")}">
+              <div class="acts">
+                <button class="btn ghost sm" data-act="pick" data-arg="sec:${i}:${j}">교체</button>
+                <button class="btn danger sm" data-act="delphoto" data-arg="${i}:${j}">삭제</button>
+              </div>
+            </div>
+          </div>`).join("")}
+        <div class="dropzone" data-drop="secnew:${i}" data-act="pick" data-arg="secnew:${i}">
+          ＋ 사진 추가<br><span style="font-size:11px">클릭하거나 파일을 끌어다 놓으세요</span>
+        </div>
+      </div>
+    </div>`).join("");
+  return html;
+}
+
+/* ---------- 3. 안내 문구 ---------- */
+function viewText(){
+  const t = draft.text[curLang];
+  let html = `<div class="card"><h3>📝 언어 선택 ${langBar()}</h3>
+    <p class="hint" style="margin-top:-4px">선택한 언어의 문구만 수정됩니다. 다른 언어도 각각 확인해 주세요.</p></div>`;
+
+  html += `<div class="card">
+    <h3>첫 화면 문구</h3>
+    ${inp("큰 제목", `text.${curLang}.title`)}
+    ${inp("부제목", `text.${curLang}.sub`)}
+    <div class="field"><label>소개 문장</label>
+      <textarea data-path="text.${curLang}.intro">${esc(t.intro)}</textarea></div>
+  </div>`;
+
+  html += `<div class="section-head">섹션별 안내 문구 (${t.sections.length}개)</div>`;
+  html += t.sections.map((s, i) => `
+    <div class="card">
+      <h3><span class="idx">${i + 1}</span> ${esc(draft.sections[i].icon)} ${esc(s.title)}</h3>
+      <div class="grid2">
+        ${inp("메뉴 버튼 이름", `text.${curLang}.sections.${i}.menu`)}
+        ${inp("섹션 제목", `text.${curLang}.sections.${i}.title`)}
+      </div>
+      <div class="field"><label>아이콘</label>
+        <input type="text" data-path="sections.${i}.icon" value="${esc(draft.sections[i].icon)}">
+        <div class="hint">모든 언어에 공통 적용됩니다.</div>
+      </div>
+      <label style="margin-top:6px">안내 항목</label>
+      ${s.items.map((it, j) => `
+        <div class="sub-item">
+          <div class="row"><span>항목 ${j + 1}</span>
+            <button class="btn danger sm" data-act="delitem" data-arg="${i}:${j}">삭제</button></div>
+          <div class="field"><input type="text" placeholder="소제목" data-path="text.${curLang}.sections.${i}.items.${j}.b" value="${esc(it.b)}"></div>
+          <textarea placeholder="설명" data-path="text.${curLang}.sections.${i}.items.${j}.p">${esc(it.p)}</textarea>
+        </div>`).join("")}
+      <button class="btn ghost sm" data-act="additem" data-arg="${i}">＋ 항목 추가</button>
+    </div>`).join("");
+  return html;
+}
+
+/* ---------- 4. 맛집 & 명소 ---------- */
+function cardList(key, title, icon, rawHtml){
+  const list = draft[key];
+  return `<div class="section-head">${icon} ${title} (${list.length}개)</div>` +
+    list.map((c, i) => `
+    <div class="card">
+      <h3><span class="idx">${i + 1}</span> ${esc(c.name[curLang] || c.name.ko || "(이름 없음)")}</h3>
+      <div class="photos" style="grid-template-columns:minmax(0,220px);margin-bottom:14px">
+        <div class="photo">
+          ${photoBox(c.img, {drop: `${key}:${i}`})}
+          <div class="meta"><div class="acts">
+            <button class="btn ghost sm" data-act="pick" data-arg="${key}:${i}">사진 교체</button>
+          </div></div>
+        </div>
+      </div>
+      ${inp("이름", `${key}.${i}.name.${curLang}`)}
+      <div class="field"><label>설명</label>
+        <textarea data-path="${key}.${i}.desc.${curLang}">${esc(c.desc[curLang] || "")}</textarea>
+        ${rawHtml ? `<div class="hint">줄바꿈은 <kbd>&lt;br&gt;</kbd>, 굵게는 <kbd>&lt;b&gt;글자&lt;/b&gt;</kbd> 로 쓸 수 있습니다.</div>` : ""}
+      </div>
+      ${inp("지도/상세 링크", `${key}.${i}.link.${curLang}`, "언어마다 다른 링크를 넣을 수 있습니다.")}
+      <button class="btn danger sm" data-act="delcard" data-arg="${key}:${i}">이 항목 삭제</button>
+    </div>`).join("") +
+    `<button class="btn ghost" data-act="addcard" data-arg="${key}" style="margin-bottom:22px">＋ ${title} 추가</button>`;
+}
+function viewCards(){
+  return `<div class="card"><h3>🍽️ 언어 선택 ${langBar()}</h3>
+    <p class="hint" style="margin-top:-4px">사진은 모든 언어에 공통으로 적용되고, 이름·설명·링크는 언어별로 저장됩니다.</p></div>`
+    + cardList("foods", "맛집", "🍽️", false)
+    + cardList("places", "명소", "📍", true);
+}
+
+/* ---------- 입력 반영 ---------- */
+pane.addEventListener("input", e => {
+  const p = e.target.dataset.path;
+  if(!p) return;
+  setPath(draft, p, e.target.value);
+  setDirty(true);
+});
+
+/* ---------- 버튼 동작 ---------- */
+pane.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]");
+  if(!b) return;
+  const act = b.dataset.act, arg = b.dataset.arg || "";
+  if(act === "pick") return pickFile(arg);
+  if(act === "laundrymap"){
+    const a = (draft.config.laundry.address || "").trim();
+    if(!a) return alert("먼저 세탁방 주소를 입력해 주세요.");
+    draft.config.laundry.mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(a);
+    setDirty(true); renderTab(); return;
+  }
+  if(act === "delphoto"){
+    const [i, j] = arg.split(":").map(Number);
+    if(!confirm("이 사진을 안내 페이지에서 뺄까요?")) return;
+    draft.sections[i].photos.splice(j, 1);
+    setDirty(true); renderTab(); return;
+  }
+  if(act === "additem"){
+    const i = Number(arg);
+    LANGS.forEach(([l]) => draft.text[l].sections[i].items.push({b: "", p: ""}));
+    setDirty(true); renderTab(); return;
+  }
+  if(act === "delitem"){
+    const [i, j] = arg.split(":").map(Number);
+    if(!confirm("이 항목을 삭제할까요? (4개 국어 모두에서 삭제됩니다)")) return;
+    LANGS.forEach(([l]) => draft.text[l].sections[i].items.splice(j, 1));
+    setDirty(true); renderTab(); return;
+  }
+  if(act === "addcard"){
+    const key = arg;
+    const empty = () => Object.fromEntries(LANGS.map(([l]) => [l, ""]));
+    draft[key].push({img: "", name: empty(), desc: empty(), link: empty()});
+    setDirty(true); renderTab();
+    window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
+    return;
+  }
+  if(act === "delcard"){
+    const [key, i] = arg.split(":");
+    if(!confirm("이 항목을 삭제할까요? (4개 국어 모두에서 삭제됩니다)")) return;
+    draft[key].splice(Number(i), 1);
+    setDirty(true); renderTab(); return;
+  }
+});
+
+/* ---------- 사진 업로드 ---------- */
+function pickFile(target){
+  const inp = document.createElement("input");
+  inp.type = "file";
+  inp.accept = "image/*";
+  inp.onchange = () => { if(inp.files[0]) acceptImage(inp.files[0], target); };
+  inp.click();
+}
+function wirePhotoDrops(){
+  pane.querySelectorAll("[data-drop]").forEach(el => {
+    const box = el.closest(".photo") || el;
+    el.addEventListener("dragover", e => { e.preventDefault(); box.classList.add("over"); });
+    el.addEventListener("dragleave", () => box.classList.remove("over"));
+    el.addEventListener("drop", e => {
+      e.preventDefault(); box.classList.remove("over");
+      const f = e.dataTransfer.files[0];
+      if(f) acceptImage(f, el.dataset.drop);
+    });
+  });
+}
+async function acceptImage(file, target){
+  if(!/^image\//.test(file.type)) return alert("이미지 파일만 올릴 수 있습니다.");
+  setStatus("사진 준비 중…");
+  try {
+    const dataUrl = await shrink(file);
+    const path = `images/up/${stamp()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+    pending[path] = dataUrl;
+    const [kind, a, b] = target.split(":");
+    if(kind === "sec")          draft.sections[+a].photos[+b].src = path;
+    else if(kind === "secnew")  draft.sections[+a].photos.push({src: path, caption: {ko: "", en: "", ja: "", zh: ""}});
+    else                        draft[kind][+a].img = path;   // foods / places
+    setDirty(true);
+    renderTab();
+  } catch(err){
+    setStatus("사진을 읽지 못했습니다: " + err.message, "err");
+  }
+}
+/* 긴 변 1600px, JPEG 품질 0.82 로 축소 (휴대폰 원본 5MB → 보통 200~400KB) */
+async function shrink(file, max = 1600, quality = 0.82){
+  let bmp = null;
+  try { bmp = await createImageBitmap(file, {imageOrientation: "from-image"}); } catch(e){}
+  const src = bmp || await new Promise((res, rej) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => { URL.revokeObjectURL(url); res(img); };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error("형식을 알 수 없는 이미지")); };
+    img.src = url;
+  });
+  const w0 = src.width, h0 = src.height;
+  const scale = Math.min(1, max / Math.max(w0, h0));
+  const w = Math.max(1, Math.round(w0 * scale)), h = Math.max(1, Math.round(h0 * scale));
+  const cv = document.createElement("canvas");
+  cv.width = w; cv.height = h;
+  const ctx = cv.getContext("2d");
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h);   // 투명 PNG → 흰 배경
+  ctx.drawImage(src, 0, 0, w, h);
+  if(bmp) bmp.close();
+  return cv.toDataURL("image/jpeg", quality);
+}
+
+/* ---------- 되돌리기 ---------- */
+$("#revertBtn").onclick = () => {
+  if(!confirm("저장하지 않은 수정 내용을 모두 버리고 처음 상태로 되돌릴까요?")) return;
+  draft = clone(original);
+  pending = {};
+  setDirty(false);
+  renderTab();
+  setStatus("되돌렸습니다.");
+};
+
+/* ---------- 미리보기 ---------- */
+let previewReady = false;
+$("#previewBtn").onclick = () => {
+  previewReady = false;
+  $("#pv").src = "../index.html?preview=" + Date.now();
+  $("#modal").classList.add("on");
+};
+$("#modalClose").onclick = () => { $("#modal").classList.remove("on"); $("#pv").src = "about:blank"; };
+window.addEventListener("message", ev => {
+  if(ev.origin !== location.origin) return;
+  if(ev.data && ev.data.type === "nstay-ready" && !previewReady){
+    previewReady = true;
+    // 아직 저장 전인 사진은 미리보기에서 dataURL 로 바꿔치기
+    const d = clone(draft);
+    const swap = s => (s && pending[s]) ? pending[s] : s;
+    d.sections.forEach(sec => (sec.photos || []).forEach(p => p.src = swap(p.src)));
+    ["foods", "places"].forEach(k => d[k].forEach(c => c.img = swap(c.img)));
+    $("#pv").contentWindow.postMessage({type: "nstay-preview", data: d}, location.origin);
+  }
+});
+
+/* ---------- 저장 (커밋 1개로 묶어서) ---------- */
+$("#saveBtn").onclick = async () => {
+  const btn = $("#saveBtn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> 저장 중…';
+  const photoCount = Object.keys(pending).length;
+  try {
+    setStatus("변경 내용을 GitHub 에 올리는 중…");
+
+    // 1) 현재 main 의 마지막 커밋
+    const ref = await api(`/repos/${OWNER}/${REPO}/git/ref/heads/${BRANCH}`);
+    const baseSha = ref.object.sha;
+    const baseCommit = await api(`/repos/${OWNER}/${REPO}/git/commits/${baseSha}`);
+
+    // 2) 파일들을 blob 으로 올리기 (사진 + content.json)
+    const tree = [];
+    let n = 0;
+    for(const [path, dataUrl] of Object.entries(pending)){
+      n++;
+      setStatus(`사진 올리는 중… (${n}/${photoCount})`);
+      const blob = await api(`/repos/${OWNER}/${REPO}/git/blobs`, {
+        method: "POST",
+        body: JSON.stringify({content: dataUrl.split(",")[1], encoding: "base64"})
+      });
+      tree.push({path, mode: "100644", type: "blob", sha: blob.sha});
+    }
+    setStatus("안내 내용 올리는 중…");
+    const jsonBlob = await api(`/repos/${OWNER}/${REPO}/git/blobs`, {
+      method: "POST",
+      body: JSON.stringify({content: b64encode(JSON.stringify(draft, null, 2) + "\n"), encoding: "base64"})
+    });
+    tree.push({path: FILE, mode: "100644", type: "blob", sha: jsonBlob.sha});
+
+    // 3) 트리 → 커밋 → 브랜치 이동 (전부 한 커밋)
+    const newTree = await api(`/repos/${OWNER}/${REPO}/git/trees`, {
+      method: "POST",
+      body: JSON.stringify({base_tree: baseCommit.tree.sha, tree})
+    });
+    const msg = photoCount
+      ? `안내 내용 수정 · 사진 ${photoCount}장 (관리자 페이지)`
+      : "안내 내용 수정 (관리자 페이지)";
+    const commit = await api(`/repos/${OWNER}/${REPO}/git/commits`, {
+      method: "POST",
+      body: JSON.stringify({message: msg, tree: newTree.sha, parents: [baseSha]})
+    });
+    await api(`/repos/${OWNER}/${REPO}/git/refs/heads/${BRANCH}`, {
+      method: "PATCH",
+      body: JSON.stringify({sha: commit.sha})
+    });
+
+    original = clone(draft);
+    pending = {};
+    setDirty(false);
+    renderTab();
+    await waitForPages();
+  } catch(err){
+    setStatus("저장 실패 — " + friendlyError(err), "err");
+  } finally {
+    btn.disabled = isDirty ? false : true;
+    btn.textContent = "저장하기";
+  }
+};
+
+/* 실제 사이트에 반영될 때까지 상태 표시 (Pages 권한이 없으면 시간만 안내) */
+async function waitForPages(){
+  const started = Date.now();
+  for(let i = 0; i < 40; i++){
+    let build = null;
+    try { build = await api(`/repos/${OWNER}/${REPO}/pages/builds/latest`); }
+    catch(e){
+      setStatus(`저장 완료! 1~2분 뒤 <a href="${SITE}" target="_blank" rel="noopener"><b>사이트</b></a>에 반영됩니다.`, "ok");
+      return;
+    }
+    if(build.status === "built" && new Date(build.created_at).getTime() > started - 60000){
+      setStatus(`✅ 저장 완료! <a href="${SITE}" target="_blank" rel="noopener"><b>사이트에서 확인하기</b></a>`, "ok");
+      return;
+    }
+    if(build.status === "errored"){
+      setStatus("저장은 되었지만 사이트 반영에 실패했습니다. 잠시 뒤 다시 시도해 주세요.", "err");
+      return;
+    }
+    setStatus(`저장 완료. 사이트에 반영 중… (${Math.round((Date.now() - started) / 1000)}초)`, "ok");
+    await new Promise(r => setTimeout(r, 3000));
+  }
+  setStatus(`저장 완료! 곧 <a href="${SITE}" target="_blank" rel="noopener"><b>사이트</b></a>에 반영됩니다.`, "ok");
+}
+
+/* ---------- 자동 로그인 ---------- */
+if(token) start();
+</script>
+</body>
+</html>

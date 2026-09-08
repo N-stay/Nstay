@@ -1,0 +1,1244 @@
+{
+  "version": 1,
+  "config": {
+    "name": "N STAY",
+    "area": "NAMPO · BUPYEONG · BUSAN",
+    "address": {
+      "ko": "부산 중구 보수대로44번길 25 3층",
+      "en": "3F, 25, Bosu-daero 44beon-gil, Jung-gu, Busan",
+      "ja": "釜山 中区 宝水大路44番ギル 25 3階",
+      "zh": "釜山广域市中区宝水大路44号街25号 3层"
+    },
+    "checkIn": "15:00",
+    "checkOut": "11:00",
+    "wifiName": "N STAY Wi-Fi",
+    "wifiPassword": "CHANGE-ME",
+    "airbnbUrl": "",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Busan+Jung-gu+Bosu-daero-44beon-gil+25",
+    "baeminUrl": "https://www.baemin.com/en/global",
+    "busStops": {
+      "bosu": "https://www.google.com/maps/search/?api=1&query=보수사거리+버스정류장+부산",
+      "bupyeong": "https://www.google.com/maps/search/?api=1&query=부평시장+버스정류장+부산"
+    },
+    "laundry": {
+      "address": "부산 중구 보수대로44번길 23-2",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EB%B6%80%EC%82%B0%20%EC%A4%91%EA%B5%AC%20%EB%B3%B4%EC%88%98%EB%8C%80%EB%A1%9C44%EB%B2%88%EA%B8%B8%2023-2"
+    }
+  },
+  "sections": [
+    {
+      "icon": "🏠",
+      "photos": [],
+      "key": "house"
+    },
+    {
+      "icon": "📶",
+      "photos": [],
+      "key": "wifi"
+    },
+    {
+      "icon": "🚌",
+      "photos": [],
+      "key": "transit"
+    },
+    {
+      "icon": "🍽️",
+      "photos": [],
+      "key": "food"
+    },
+    {
+      "icon": "📍",
+      "photos": [],
+      "key": "places"
+    },
+    {
+      "icon": "❄️",
+      "photos": [
+        {
+          "src": "images/ac_remote.jpg",
+          "caption": {
+            "ko": "에어컨 리모컨 안내",
+            "en": "AC Remote Guide",
+            "ja": "エアコンリモコンの案内",
+            "zh": "空调遥控器说明"
+          }
+        }
+      ],
+      "key": "ac"
+    },
+    {
+      "icon": "🍳",
+      "photos": [],
+      "key": "kitchen"
+    },
+    {
+      "icon": "🚿",
+      "photos": [
+        {
+          "src": "images/water_heater.jpg",
+          "caption": {
+            "ko": "온수/보일러 조절기 사용 안내",
+            "en": "Water Heater Controller Guide",
+            "ja": "給湯・ボイラーの使い方",
+            "zh": "地暖及热水控制器说明"
+          }
+        }
+      ],
+      "key": "bath"
+    },
+    {
+      "key": "laundry",
+      "icon": "🧺",
+      "photos": []
+    },
+    {
+      "icon": "🗑️",
+      "photos": [
+        {
+          "src": "images/trash.jpg",
+          "caption": {
+            "ko": "분리수거 및 쓰레기 배출 안내",
+            "en": "Recycling & Trash Guide",
+            "ja": "ゴミの分別案内",
+            "zh": "垃圾分类说明"
+          }
+        }
+      ],
+      "key": "trash"
+    },
+    {
+      "icon": "🚨",
+      "photos": [
+        {
+          "src": "images/safety.jpg",
+          "caption": {
+            "ko": "소방 및 안전시설",
+            "en": "Safety Equipment",
+            "ja": "安全設備",
+            "zh": "安全设施"
+          }
+        }
+      ],
+      "key": "safety"
+    },
+    {
+      "icon": "🍔",
+      "photos": [],
+      "key": "delivery"
+    },
+    {
+      "icon": "🕚",
+      "photos": [],
+      "key": "checkout"
+    },
+    {
+      "icon": "💬",
+      "photos": [],
+      "key": "airbnb"
+    }
+  ],
+  "text": {
+    "ko": {
+      "title": "N STAY에 오신 것을 환영합니다",
+      "sub": "보수동 책방골목과 부평깡통시장 바로 앞 안락한 숙소",
+      "intro": "숙소 이용 방법, 와이파이, 대중교통, 추천 맛집 및 관광지 안내를 한곳에서 확인하세요.",
+      "sections": [
+        {
+          "menu": "숙소 안내",
+          "title": "숙소 안내",
+          "items": [
+            {
+              "b": "입구 및 보안",
+              "p": "외출 시 도어록이 완전히 닫히고 잠겼는지 꼭 확인해주세요."
+            },
+            {
+              "b": "조용한 시간 (Quiet Hours)",
+              "p": "22:00 ~ 08:00에는 이웃 주민을 위해 큰 소음이나 음악을 삼가주세요."
+            },
+            {
+              "b": "금연 안내",
+              "p": "실내 전체는 절대 금연 구역입니다 (전자담배 포함)."
+            }
+          ]
+        },
+        {
+          "menu": "Wi-Fi",
+          "title": "Wi-Fi 안내",
+          "items": [
+            {
+              "b": "접속 정보",
+              "p": "숙소 내 초고속 인터넷이 무료로 제공됩니다. 아래 비밀번호를 확인해주세요."
+            }
+          ]
+        },
+        {
+          "menu": "교통 & 정류장",
+          "title": "대중교통 & 버스 정류장",
+          "items": [
+            {
+              "b": "가까운 버스 정류장",
+              "p": "도보 2~3분 거리에 '보수사거리' 및 '부평시장' 정류장이 위치해 있습니다."
+            },
+            {
+              "b": "주요 버스 노선",
+              "p": "부산역(81, 40, 103번), 서면/전포(81번 직통 약 25분), 해운대(1003번 급행)."
+            },
+            {
+              "b": "지하철 (도시철도)",
+              "p": "부산 1호선 '자갈치역' 3번 출구 또는 '토성역'에서 도보 약 7~9분 거리입니다."
+            },
+            {
+              "b": "부산역 이동 팁",
+              "p": "부산역까지 택시로 약 10분 소요되며(기본요금 수준), 버스로도 환승 없이 이동 가능합니다."
+            }
+          ]
+        },
+        {
+          "menu": "주변 추천 맛집",
+          "title": "호스트 추천 주변 맛집",
+          "items": [
+            {
+              "b": "맛집 거리 안내",
+              "p": "부평깡통시장 야시장, 족발골목, 전통 돼지국밥, 밀면 노포가 모두 도보권에 있습니다."
+            }
+          ]
+        },
+        {
+          "menu": "부산 명소 & 근교",
+          "title": "부산 명소 & 추천 여행지",
+          "items": [
+            {
+              "b": "원도심 도보 코스",
+              "p": "보수동 책방골목 → 부평깡통시장 → 국제시장 → BIFF광장 → 자갈치시장 (도보권)"
+            },
+            {
+              "b": "동부산 및 카페거리",
+              "p": "전포 카페거리, 광안리 해변, 해운대 블루라인파크까지 환승 또는 직통 교통편이 편리합니다."
+            }
+          ]
+        },
+        {
+          "menu": "에어컨 & 리모컨",
+          "title": "에어컨 & 리모컨",
+          "items": [
+            {
+              "b": "에어컨 사용법",
+              "p": "리모컨 POWER 버튼 → COOL(냉방) 모드 → 적정 온도(24~26도) 설정"
+            },
+            {
+              "b": "외출 시 주의",
+              "p": "외출 시에는 에너지 절약과 안전을 위해 에어컨과 조명을 반드시 꺼주세요."
+            }
+          ]
+        },
+        {
+          "menu": "주방",
+          "title": "주방 안내",
+          "items": [
+            {
+              "b": "인덕션 조리",
+              "p": "사용 후 전원을 끄고 상판 잔열에 주의하세요. 조리 중 자리를 비우지 마세요."
+            },
+            {
+              "b": "식기 및 조리기구",
+              "p": "사용하신 식기는 설거지 후 원래 자리에 정돈 부탁드립니다."
+            },
+            {
+              "b": "전자레인지",
+              "p": "은박지 및 금속 용기는 화재 위험이 있으니 절대 넣지 마세요."
+            }
+          ]
+        },
+        {
+          "menu": "욕실 & 온수사용",
+          "title": "욕실 & 온수 사용법",
+          "items": [
+            {
+              "b": "온수 사용",
+              "p": "벽면에 위치한 보일러 조절기에서 '온수전용' 또는 '난방/온수' 버튼이 켜져 있는지 확인 후 사용해주세요."
+            },
+            {
+              "b": "배수 관리",
+              "p": "배수구가 막히지 않도록 머리카락이나 이물질은 휴지통에 버려주세요."
+            }
+          ]
+        },
+        {
+          "menu": "세탁 안내",
+          "title": "세탁 안내 (코인세탁방)",
+          "items": [
+            {
+              "b": "위치",
+              "p": "숙소 바로 앞에 코인세탁방이 있습니다. 도보 1분 거리이며, 아래 지도 버튼으로 위치를 확인하실 수 있습니다."
+            },
+            {
+              "b": "이용 방법",
+              "p": "세탁기와 건조기를 모두 이용할 수 있습니다. 동전 또는 카드로 결제하며, 세제는 현장에서 구매할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "menu": "쓰레기 분리수거",
+          "title": "쓰레기 & 분리수거",
+          "items": [
+            {
+              "b": "일반 쓰레기",
+              "p": "제공된 종량제 봉투에 담아 입구를 묶어주세요."
+            },
+            {
+              "b": "재활용 분리수거",
+              "p": "플라스틱, 캔, 유리병, 종이는 물로 헹군 후 분리해주세요."
+            },
+            {
+              "b": "음식물 쓰레기",
+              "p": "물기를 최대한 뺀 후 싱크대 전용 음식물 쓰레기통에 담아주세요."
+            }
+          ]
+        },
+        {
+          "menu": "안전",
+          "title": "안전 & 응급상황",
+          "items": [
+            {
+              "b": "응급 연락처",
+              "p": "화재/구급 119, 범죄/도난 112"
+            },
+            {
+              "b": "비상 장비",
+              "p": "현관 및 주방 인근 소화기와 비상 대피 경로를 미리 확인해두세요."
+            }
+          ]
+        },
+        {
+          "menu": "배달 안내",
+          "title": "배달 음식 안내",
+          "items": [
+            {
+              "b": "배달 주소",
+              "p": "배달 주문 시 아래 3층 주소를 그대로 입력해 주세요."
+            },
+            {
+              "b": "배달앱 사용",
+              "p": "외국인 게스트는 배달의민족 글로벌(영문) 페이지를 간편하게 이용할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "menu": "체크아웃",
+          "title": "체크아웃 안내",
+          "items": [
+            {
+              "b": "체크아웃 시간",
+              "p": "오전 11:00까지 퇴실을 완료해주세요."
+            },
+            {
+              "b": "퇴실 전 점검",
+              "p": "에어컨/난방 OFF, 전등 소등, 창문 및 문 잠김 확인 후 에어비앤비 메시지로 알려주세요."
+            }
+          ]
+        },
+        {
+          "menu": "Airbnb 문의",
+          "title": "Airbnb 문의",
+          "items": [
+            {
+              "b": "문의 방식",
+              "p": "머무시는 동안 문의사항이 있으시면 언제든지 에어비앤비 메시지로 연락 주세요."
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "title": "Welcome to N STAY",
+      "sub": "Cozy stay near Bosu-dong Book Street & Bupyeong Market",
+      "intro": "Instructions for house rules, Wi-Fi, transit, recommended restaurants, and Busan travel guide.",
+      "sections": [
+        {
+          "menu": "House Guide",
+          "title": "House Guide",
+          "items": [
+            {
+              "b": "Entrance & Lock",
+              "p": "Please ensure the electronic door lock is securely locked whenever leaving."
+            },
+            {
+              "b": "Quiet Hours",
+              "p": "Please keep noise low between 22:00 and 08:00 for the neighbors."
+            },
+            {
+              "b": "No Smoking",
+              "p": "Strictly no smoking inside the premises (including e-cigarettes)."
+            }
+          ]
+        },
+        {
+          "menu": "Wi-Fi",
+          "title": "Wi-Fi Info",
+          "items": [
+            {
+              "b": "High-speed Wi-Fi",
+              "p": "Free high-speed Wi-Fi is available. Check the password below."
+            }
+          ]
+        },
+        {
+          "menu": "Transit & Bus",
+          "title": "Transit & Bus Stops",
+          "items": [
+            {
+              "b": "Nearby Bus Stops",
+              "p": "2~3 mins walk to 'Bosu Intersection' or 'Bupyeong Market' bus stop."
+            },
+            {
+              "b": "Key Bus Lines",
+              "p": "Busan Station (No. 81, 40, 103), Seomyeon/Jeonpo (No. 81 direct, ~25m), Haeundae (No. 1003 express)."
+            },
+            {
+              "b": "Subway (Metro)",
+              "p": "Approx. 7~9 mins walk to Jagalchi Station or Toseong Station (Line 1)."
+            },
+            {
+              "b": "Taxi Fare",
+              "p": "Only about 10 mins by taxi from Busan KTX Station (~₩5,000-6,000)."
+            }
+          ]
+        },
+        {
+          "menu": "Local Food",
+          "title": "Recommended Local Food",
+          "items": [
+            {
+              "b": "Food Alleys",
+              "p": "Bupyeong Night Market street foods, Jokbal alley, pork soup, and Milmyeon are all within walking distance."
+            }
+          ]
+        },
+        {
+          "menu": "Busan Highlights",
+          "title": "Busan Highlights & Day Trips",
+          "items": [
+            {
+              "b": "Walking Route",
+              "p": "Bosu Book Alley → Bupyeong Night Market → Gukje Market → BIFF Square → Jagalchi Market."
+            },
+            {
+              "b": "Trendy & Beaches",
+              "p": "Easily reach Jeonpo Cafe Street, Gwangalli Beach, and Haeundae via bus or subway."
+            }
+          ]
+        },
+        {
+          "menu": "AC & Remote",
+          "title": "Air Conditioning & Remote",
+          "items": [
+            {
+              "b": "How to Use",
+              "p": "Press POWER → Select COOL mode ❄️ → Set to 24~26°C."
+            },
+            {
+              "b": "Energy Saving",
+              "p": "Please turn off the AC and lights whenever you step out."
+            }
+          ]
+        },
+        {
+          "menu": "Kitchen",
+          "title": "Kitchen & Cooking",
+          "items": [
+            {
+              "b": "Induction Cooktop",
+              "p": "Turn off after cooking. Beware of hot surface."
+            },
+            {
+              "b": "Dishes",
+              "p": "Please wash used cookware/dishes and return them to the shelf."
+            },
+            {
+              "b": "Microwave",
+              "p": "Never heat aluminum foil or metalware in the microwave."
+            }
+          ]
+        },
+        {
+          "menu": "Bathroom & Hot Water",
+          "title": "Bathroom & Hot Water",
+          "items": [
+            {
+              "b": "Hot Water",
+              "p": "Please ensure the 'Hot Water (온수)' mode is active on the boiler wall controller before showering."
+            },
+            {
+              "b": "Drain Care",
+              "p": "Do not flush wet wipes or hair down the drain."
+            }
+          ]
+        },
+        {
+          "menu": "Laundry",
+          "title": "Laundry (Coin Laundromat)",
+          "items": [
+            {
+              "b": "Location",
+              "p": "A self-service coin laundromat is right in front of the building, about a 1 minute walk. Tap the map button below for directions."
+            },
+            {
+              "b": "How to Use",
+              "p": "Both washers and dryers are available. Pay by coin or card; detergent can be purchased on site."
+            }
+          ]
+        },
+        {
+          "menu": "Trash & Recycle",
+          "title": "Trash & Recycling",
+          "items": [
+            {
+              "b": "General Waste",
+              "p": "Use the designated trash bag provided."
+            },
+            {
+              "b": "Recycling",
+              "p": "Rinse and separate plastic bottles, cans, glass, and paper."
+            },
+            {
+              "b": "Food Waste",
+              "p": "Drain moisture completely and place in the small food waste bin."
+            }
+          ]
+        },
+        {
+          "menu": "Safety",
+          "title": "Safety & Emergency",
+          "items": [
+            {
+              "b": "Emergency Lines",
+              "p": "Fire & Medical: 119 | Police: 112"
+            },
+            {
+              "b": "Safety Gear",
+              "p": "Fire extinguisher is placed near the entrance/kitchen."
+            }
+          ]
+        },
+        {
+          "menu": "Food Delivery",
+          "title": "Food Delivery",
+          "items": [
+            {
+              "b": "Delivery Address",
+              "p": "Please use the 3rd floor address below when ordering food."
+            },
+            {
+              "b": "Baemin Global",
+              "p": "Order directly in English using Baemin Global web/app."
+            }
+          ]
+        },
+        {
+          "menu": "Check-out",
+          "title": "Check-out",
+          "items": [
+            {
+              "b": "Check-out Time",
+              "p": "Please complete check-out by 11:00 AM."
+            },
+            {
+              "b": "Before Leaving",
+              "p": "Turn off AC/lights, close windows, lock the door, and send us a message on Airbnb."
+            }
+          ]
+        },
+        {
+          "menu": "Airbnb Contact",
+          "title": "Airbnb Contact",
+          "items": [
+            {
+              "b": "Contact Host",
+              "p": "Feel free to message us on Airbnb anytime during your stay!"
+            }
+          ]
+        }
+      ]
+    },
+    "ja": {
+      "title": "N STAYへようこそ",
+      "sub": "宝水洞本屋通りと富平カントン市場すぐそばの快適な宿",
+      "intro": "宿泊案内、Wi-Fi、交通アクセス、おすすめグルメ、釜山観光案内をまとめています。",
+      "sections": [
+        {
+          "menu": "宿泊案内",
+          "title": "宿泊案内",
+          "items": [
+            {
+              "b": "施錠の確認",
+              "p": "外出時は電子ロックが確実に施錠されているかご確認ください。"
+            },
+            {
+              "b": "静かな時間",
+              "p": "22:00〜08:00の間は近隣への配慮のため静かにお過ごしください。"
+            },
+            {
+              "b": "完全禁煙",
+              "p": "電子タバコを含め室内は完全禁煙です。"
+            }
+          ]
+        },
+        {
+          "menu": "Wi-Fi",
+          "title": "Wi-Fi案内",
+          "items": [
+            {
+              "b": "接続情報",
+              "p": "高速無料Wi-Fiをご利用いただけます。以下をご確認ください。"
+            }
+          ]
+        },
+        {
+          "menu": "交通・バス",
+          "title": "公共交通・バス停",
+          "items": [
+            {
+              "b": "最寄りのバス停",
+              "p": "徒歩2〜3分に「宝水交差点」および「富平市場」バス停があります。"
+            },
+            {
+              "b": "主要路線",
+              "p": "釜山駅（81、40、103番）、西面・田浦（81番 直通約25分）、海雲台（1003番 急行）。"
+            },
+            {
+              "b": "地下鉄",
+              "p": "釜山地下鉄1号線「チャガルチ駅」3番出口、または「土城駅」から徒歩約7〜9分です。"
+            },
+            {
+              "b": "釜山駅から",
+              "p": "タクシーで約10分、基本料金圏内です。"
+            }
+          ]
+        },
+        {
+          "menu": "周辺グルメ",
+          "title": "おすすめ周辺グルメ",
+          "items": [
+            {
+              "b": "グルメ情報",
+              "p": "富平市場の屋台、豚足通り、名物テジクッパやミルミョンがすべて徒歩圏内です。"
+            }
+          ]
+        },
+        {
+          "menu": "釜山名所・遠出",
+          "title": "釜山名所・遠出スポット",
+          "items": [
+            {
+              "b": "旧市街コース",
+              "p": "宝水洞本屋通り → カントン市場 → 国際市場 → BIFF広場 → チャガルチ市場（徒歩圏内）"
+            },
+            {
+              "b": "人気エリア",
+              "p": "田浦カフェ通り、広安里、海雲台へもバスや地下鉄で快適にアクセスできます。"
+            }
+          ]
+        },
+        {
+          "menu": "エアコンとリモコン",
+          "title": "エアコン・リモコン",
+          "items": [
+            {
+              "b": "使い方",
+              "p": "電源 → COOL(冷房) → 24〜26度に設定してください。外出時はOFFをお願いします。"
+            }
+          ]
+        },
+        {
+          "menu": "キッチン",
+          "title": "キッチン",
+          "items": [
+            {
+              "b": "調理",
+              "p": "使用後の食器は洗い、電子レンジには金属類を入れないでください。"
+            }
+          ]
+        },
+        {
+          "menu": "浴室・お湯の使い方",
+          "title": "浴室・お湯の使い方",
+          "items": [
+            {
+              "b": "給湯",
+              "p": "壁面のボイラーパネルで「온수(お湯)」ランプが点灯していることを確認してご利用ください。"
+            }
+          ]
+        },
+        {
+          "menu": "ランドリー",
+          "title": "ランドリー（コインランドリー）",
+          "items": [
+            {
+              "b": "場所",
+              "p": "宿泊施設のすぐ目の前にコインランドリーがあります（徒歩約1分）。下の地図ボタンから場所をご確認いただけます。"
+            },
+            {
+              "b": "利用方法",
+              "p": "洗濯機・乾燥機ともにご利用いただけます。硬貨またはカードでお支払いでき、洗剤は現地で購入できます。"
+            }
+          ]
+        },
+        {
+          "menu": "ゴミの分別",
+          "title": "ゴミの分別",
+          "items": [
+            {
+              "b": "分別",
+              "p": "一般ゴミ、ビン・缶・ペットボトル、生ゴミの分別にご協力ください。"
+            }
+          ]
+        },
+        {
+          "menu": "安全案内",
+          "title": "安全・緊急時",
+          "items": [
+            {
+              "b": "緊急連絡先",
+              "p": "火災・救急 119 / 警察 112"
+            }
+          ]
+        },
+        {
+          "menu": "デリバリー",
+          "title": "出前（デリバリー）",
+          "items": [
+            {
+              "b": "住所",
+              "p": "出前をご注文の際は、下記の3階の住所をご入力ください。"
+            }
+          ]
+        },
+        {
+          "menu": "チェックアウト",
+          "title": "チェックアウト",
+          "items": [
+            {
+              "b": "退室時間",
+              "p": "午前11:00までに退室をお願いいたします。退室後はメッセージでお知らせください。"
+            }
+          ]
+        },
+        {
+          "menu": "Airbnb連絡",
+          "title": "Airbnb連絡",
+          "items": [
+            {
+              "b": "お問い合わせ",
+              "p": "滞在中のご質問はいつでもAirbnbメッセージでお送りください。"
+            }
+          ]
+        }
+      ]
+    },
+    "zh": {
+      "title": "欢迎入住 N STAY",
+      "sub": "邻近宝水洞旧书街与富平罐头市场的舒适住宿",
+      "intro": "在这里查看房间设施、Wi-Fi、交通指引、特色美食及釜山旅行推荐。",
+      "sections": [
+        {
+          "menu": "住宿指南",
+          "title": "住宿指南",
+          "items": [
+            {
+              "b": "门锁安全",
+              "p": "外出时请确认电子门锁已完全锁好。"
+            },
+            {
+              "b": "安静时间",
+              "p": "22:00至08:00请勿制造噪音，保持安静。"
+            },
+            {
+              "b": "室内禁烟",
+              "p": "包括电子烟在内，全室内严禁吸烟。"
+            }
+          ]
+        },
+        {
+          "menu": "Wi-Fi",
+          "title": "Wi-Fi 信息",
+          "items": [
+            {
+              "b": "免费无线网",
+              "p": "提供高速无线网络，连接信息请看下方。"
+            }
+          ]
+        },
+        {
+          "menu": "交通与公交",
+          "title": "公共交通与公交站",
+          "items": [
+            {
+              "b": "附近公交站",
+              "p": "步行2~3分钟可达“宝水十字路口”及“富平市场”公交站。"
+            },
+            {
+              "b": "主要路线",
+              "p": "直达釜山站（81、40、103路）、西面/田浦（81路直达约25分钟）、海云台（1003路快线）。"
+            },
+            {
+              "b": "地铁",
+              "p": "釜山地铁1号线“札嘎其站”3号出口或“土城站”步行约7~9分钟。"
+            },
+            {
+              "b": "从釜山站前往",
+              "p": "乘坐出租车约10分钟（仅需起步价左右）。"
+            }
+          ]
+        },
+        {
+          "menu": "周边美食",
+          "title": "房东推荐周边美食",
+          "items": [
+            {
+              "b": "美食分布",
+              "p": "富平罐头夜市、猪蹄街、地道猪肉汤饭及小麦冷面均在步行范围内。"
+            }
+          ]
+        },
+        {
+          "menu": "釜山景点推荐",
+          "title": "釜山景点与周边",
+          "items": [
+            {
+              "b": "老城步行程",
+              "p": "宝水洞旧书街 → 富平夜市 → 国际市场 → BIFF广场 → 札嘎其海鲜市场（均可步行）"
+            },
+            {
+              "b": "热门街区与海滩",
+              "p": "乘坐公交或地铁可轻松到达田浦咖啡街、广安里海水浴场及海云台。"
+            }
+          ]
+        },
+        {
+          "menu": "空调与遥控器",
+          "title": "空调与遥控器",
+          "items": [
+            {
+              "b": "使用方法",
+              "p": "按电源键 → 选择 COOL(制冷) → 设为24~26度。外出时请随手关机。"
+            }
+          ]
+        },
+        {
+          "menu": "厨房指南",
+          "title": "厨房使用",
+          "items": [
+            {
+              "b": "餐具整理",
+              "p": "用完请清洗并归位。请勿将金属放入微波炉。"
+            }
+          ]
+        },
+        {
+          "menu": "浴室与热水",
+          "title": "浴室与热水使用",
+          "items": [
+            {
+              "b": "热水说明",
+              "p": "淋浴前请确认墙上的锅炉控制器“热水(온수)”指示灯已开启。"
+            }
+          ]
+        },
+        {
+          "menu": "洗衣指南",
+          "title": "洗衣指南（自助洗衣店）",
+          "items": [
+            {
+              "b": "位置",
+              "p": "住宿正前方就有自助投币洗衣店，步行约1分钟。可点击下方地图按钮查看位置。"
+            },
+            {
+              "b": "使用方法",
+              "p": "洗衣机和烘干机均可使用，支持投币或刷卡支付，洗涤剂可在现场购买。"
+            }
+          ]
+        },
+        {
+          "menu": "垃圾分类",
+          "title": "垃圾分类",
+          "items": [
+            {
+              "b": "分类原则",
+              "p": "请分别投放一般垃圾、厨余垃圾和可回收瓶罐纸类。"
+            }
+          ]
+        },
+        {
+          "menu": "安全说明",
+          "title": "安全与急救",
+          "items": [
+            {
+              "b": "紧急电话",
+              "p": "火警/救护车：119 | 报警：112"
+            }
+          ]
+        },
+        {
+          "menu": "外卖指南",
+          "title": "外卖指南",
+          "items": [
+            {
+              "b": "配送地址",
+              "p": "点外卖时请直接填写下方3层地址。"
+            }
+          ]
+        },
+        {
+          "menu": "退房指南",
+          "title": "退房指南",
+          "items": [
+            {
+              "b": "退房时间",
+              "p": "请于上午 11:00 前完成退房，离开后请通过Airbnb消息告知。"
+            }
+          ]
+        },
+        {
+          "menu": "房东联系",
+          "title": "房东联系",
+          "items": [
+            {
+              "b": "随时联系",
+              "p": "住宿期间遇到任何问题，欢迎通过Airbnb消息与我们联系。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "foods": [
+    {
+      "img": "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "부평깡통시장 야시장",
+        "en": "Bupyeong Night Market",
+        "ja": "富平カントン夜市場",
+        "zh": "富平罐头夜市"
+      },
+      "desc": {
+        "ko": "유부전골, 씨앗호떡, 다채로운 글로벌 길거리 야시장 음식 (도보 3분)",
+        "en": "Fried Tofu Bag, Seed Hotteok & vibrant street foods (3 min walk)",
+        "ja": "油揚げうどん、シアホットクなど多彩な屋台グルメ（徒歩3分）",
+        "zh": "油豆腐包、糖饼等海量特色街头小吃（步行3分钟）"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=부평깡통야시장",
+        "en": "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "남포동 원조 냉채족발",
+        "en": "Chilled Jokbal Alley",
+        "ja": "南浦洞 豚足通り",
+        "zh": "南浦洞猪蹄街"
+      },
+      "desc": {
+        "ko": "새콤하고 알싸한 해파리 겨자소스로 유명한 부산 명물 족발거리 (도보 5분)",
+        "en": "Famous braised pig's trotters served cold with tangy mustard dressing (5 min walk)",
+        "ja": "さっぱりした特製マスタードソースの元祖・冷製豚足（徒歩5分）",
+        "zh": "酸爽芥末酱风味的釜山代表性凉拌猪蹄（步行5分钟）"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=원조한양족발+남포동",
+        "en": "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "부산 돼지국밥 (양산집/신창국밥)",
+        "en": "Busan Pork Soup (Dwaeji Gukbap)",
+        "ja": "釜山デジクッパ（梁山チプ）",
+        "zh": "釜山猪肉汤饭（梁山家）"
+      },
+      "desc": {
+        "ko": "부평시장 안 70년 전통의 맑고 깊은 국물이 일품인 국밥 명가 (도보 4분)",
+        "en": "Traditional rich pork broth soup with rice, 70-year historic shop (4 min walk)",
+        "ja": "富平市場内、70年の伝統を誇る澄んだ極上スープの豚クッパ（徒歩4分）",
+        "zh": "富平市场内传承70年的清爽浓郁正宗猪肉汤饭（步行4分钟）"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=양산집+부평시장",
+        "en": "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "부산 원조 밀면 (할매가야밀면)",
+        "en": "Halmae Gaya Milmyeon",
+        "ja": "ハルメ伽耶ミルミョン",
+        "zh": "奶奶伽倻小麦冷面"
+      },
+      "desc": {
+        "ko": "살얼음 동동 시원하고 감칠맛 넘치는 부산 대표 냉면/밀면 (도보 8분)",
+        "en": "Busan's iconic cold wheat noodles in chilled savory broth (8 min walk)",
+        "ja": "冷たい氷スープとモチモチ麺が絶品の釜山名物ミルミョン（徒歩8分）",
+        "zh": "清凉爽口的碎冰骨汤与秘制辣酱小麦面（步行8分钟）"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=할매가야밀면+남포동",
+        "en": "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "자갈치 백화양곱창",
+        "en": "Baekhwa Yang-gopchang",
+        "ja": "百花ヤンコプチャン",
+        "zh": "百花烤牛肠"
+      },
+      "desc": {
+        "ko": "자갈치역 앞, 연탄불 위에서 구워주는 곱창 노포 (도보 9분)",
+        "en": "Authentic historic charcoal-grilled beef tripe BBQ experience by Jagalchi (9 min walk)",
+        "ja": "練炭の香りと活気があふれる老舗のホルモン焼き専門店（徒歩9分）",
+        "zh": "札嘎其市场旁极具烟火气的炭火炭烤牛肠老字号（步行9分钟）"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=백화양곱창",
+        "en": "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "보수동 책방골목 북카페",
+        "en": "Bosu Book Alley Cafes",
+        "ja": "宝水洞ブックカフェ",
+        "zh": "宝水洞旧书街咖啡厅"
+      },
+      "desc": {
+        "ko": "골목길 고즈넉한 정취 속에서 커피와 디저트를 즐길 수 있는 카페들",
+        "en": "Cozy book cafes and bakeries tucked inside quiet historic bookstores alley",
+        "ja": "古書街の落ち着いた雰囲気の中で楽しむ珈琲とスイーツ",
+        "zh": "在静谧的书香巷弄中品尝手冲咖啡与甜点"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=보수동책방골목+카페",
+        "en": "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe"
+      }
+    }
+  ],
+  "places": [
+    {
+      "img": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "전포 카페거리 & 서면",
+        "en": "Jeonpo Cafe Street & Seomyeon",
+        "ja": "田浦カフェ通り・西面",
+        "zh": "田浦咖啡街 & 西面"
+      },
+      "desc": {
+        "ko": "트렌디한 감성 카페와 소품샵이 모인 핫플레이스<br><b>🚌 이동:</b> 숙소 앞 81번 버스 직통 (약 25분) 또는 지하철 1호선 탑승",
+        "en": "Trendy cafes, dessert spots, and lifestyle boutiques.<br><b>🚌 Transit:</b> Bus No. 81 direct from house (~25 mins) or Subway Line 1.",
+        "ja": "最新トレンドのカフェや雑貨屋が集まる人気エリア。<br><b>🚌 アクセス:</b> 宿前の81番バスで直通（約25分）または地下鉄1号線で西面駅へ。",
+        "zh": "汇聚潮流独立咖啡馆与文创杂货铺的热门街区。<br><b>🚌 交通:</b> 宿前乘坐81路公交直达（约25分钟）或搭乘地铁1号线至西面站。"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=전포카페거리",
+        "en": "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "광안리 해수욕장 & 광안대교",
+        "en": "Gwangalli Beach & Bridge",
+        "ja": "広安里海水浴場・広安大橋",
+        "zh": "广安里海水浴场 & 广安大桥"
+      },
+      "desc": {
+        "ko": "아름다운 광안대교 오션뷰, 야경 및 주말 드론쇼 명소<br><b>🚇 이동:</b> 자갈치역(1호선) → 서면역 환승(2호선) → 광안역 (약 40분)",
+        "en": "Iconic sandy beach with Diamond Bridge night lights & drone shows.<br><b>🚇 Transit:</b> Line 1 Jagalchi → Transfer Line 2 at Seomyeon → Gwangan Station (~40 mins).",
+        "ja": "広安大橋の絶景夜景とドローンショーが有名なビーチ。<br><b>🚇 アクセス:</b> 1号線チャガルチ駅 → 西面駅で2号線に乗換 → 広安駅下車（約40分）。",
+        "zh": "眺望广安大桥夜景与无人机表演的经典海滩。<br><b>🚇 交通:</b> 1号线札嘎其站 → 西面站换乘2号线至广安站下车（约40分钟）。"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=광안리해수욕장",
+        "en": "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "해운대 해변열차 (블루라인파크)",
+        "en": "Haeundae Blueline Park",
+        "ja": "海雲台ブルーラインパーク",
+        "zh": "海云台蓝线公园（胶囊列车）"
+      },
+      "desc": {
+        "ko": "해안 절벽을 따라 달리는 스카이캡슐과 해변열차<br><b>🚌 이동:</b> 자갈치역 인근에서 1003번 급행버스 직통 탑승 (약 55분)",
+        "en": "Scenic coastal Sky Capsule and beach train along cliffs.<br><b>🚌 Transit:</b> Express Bus 1003 direct from near Jagalchi (~55 mins).",
+        "ja": "海岸絶壁を走るスカイカプセルと海辺列車。<br><b>🚌 アクセス:</b> チャガルチ駅近くから1003番急行バスで直通（約55分）。",
+        "zh": "沿着绝美海岸线悬崖行驶的天空胶囊小火车。<br><b>🚌 交通:</b> 札嘎其站旁乘坐1003路快线直达（约55分钟）。"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=해운대블루라인파크+미포정거장",
+        "en": "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "흰여울문화마을 (영도)",
+        "en": "Huinnyeoul Culture Village",
+        "ja": "ヒンヨウル文化村（影島）",
+        "zh": "白浅滩文化村（影岛）"
+      },
+      "desc": {
+        "ko": "절벽 위 바다 산책로와 파노라마 오션뷰 카페<br><b>🚕 이동:</b> 숙소에서 택시로 약 12분 (약 7,000원) 또는 남포역 버스 환승",
+        "en": "Cliffside village overlooking open ocean with seaside cafes.<br><b>🚕 Transit:</b> Taxi ~12 mins (~₩7,000) or local bus from Nampo Station.",
+        "ja": "海岸絶壁沿いの絶景散策路とおしゃれなカフェ。<br><b>🚕 アクセス:</b> タクシーで約12分（約7,000ウォン）または南浦駅からバス。",
+        "zh": "坐落在海岸悬崖边上的海景咖啡馆散步路。<br><b>🚕 交通:</b> 乘出租车约12分钟（约7,000韩元）或从南浦站换乘公交。"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=흰여울문화마을",
+        "en": "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "감천문화마을",
+        "en": "Gamcheon Culture Village",
+        "ja": "甘川文化村",
+        "zh": "甘川文化村"
+      },
+      "desc": {
+        "ko": "알록달록 파스텔톤 계단식 산복도로 예술마을<br><b>🚕 이동:</b> 숙소에서 택시로 약 7분 또는 토성역 6번 출구에서 사하1-1 마을버스",
+        "en": "Vibrant terraced colorful village on mountain hillside.<br><b>🚕 Transit:</b> Taxi ~7 mins or village bus Saha 1-1 from Toseong Station.",
+        "ja": "パステルカラーの家並みが広がる階段式のアート村。<br><b>🚕 アクセス:</b> タクシーで約7分、または土城駅6番出口からマウルバス。",
+        "zh": "彩色阶梯式山坡壁画与小王子艺术村落。<br><b>🚕 交通:</b> 乘出租车约7分钟，或从土城站6号出口换乘沙下1-1社区巴士。"
+      },
+      "link": {
+        "ko": "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan",
+        "en": "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan",
+        "ja": "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan",
+        "zh": "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan"
+      }
+    },
+    {
+      "img": "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80",
+      "name": {
+        "ko": "부평깡통시장 & 국제시장",
+        "en": "Bupyeong & Gukje Market",
+        "ja": "富平カントン市場・国際市場",
+        "zh": "富平罐头夜市 & 国际市场"
+      },
+      "desc": {
+        "ko": "숙소 도보 2~5분! 부산 원도심의 활기와 전통을 느낄 수 있는 대표 시장<br><b>🚶 이동:</b> 숙소 도보 3분",
+        "en": "Historic lively bazaars with night market food right next door.<br><b>🚶 Transit:</b> 3 mins walk.",
+        "ja": "屋台グルメと釜山情緒が楽しめる代表市場。<br><b>🚶 アクセス:</b> 徒歩3分。",
+        "zh": "出门即达！尽享传统市集与丰富夜市小吃。<br><b>🚶 交通:</b> 步行3分钟。"
+      },
+      "link": {
+        "ko": "https://www.visitbusan.net/kr/index.do?lang_cd=ko&menuCd=DOM_000000301003001000&uc_seq=400",
+        "en": "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400",
+        "ja": "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400",
+        "zh": "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400"
+      }
+    }
+  ],
+  "ui": {
+    "ko": {
+      "checkIn": "체크인",
+      "checkOut": "체크아웃",
+      "mapTitle": "📍 길찾기",
+      "openBaemin": "배달의민족 열기",
+      "viewMap": "지도 바로가기 ↗",
+      "copied": "복사완료!",
+      "copyAddr": "주소 복사",
+      "bosuStop": "보수사거리 정류장 지도 ↗",
+      "bupyeongStop": "부평시장 정류장 지도 ↗",
+      "password": "비밀번호",
+      "footer": "Guest Guide · 문의는 Airbnb 메시지를 이용해주세요.",
+      "placesNote": "운영시간 및 교통편은 현지 사정에 따라 달라질 수 있으니 방문 전 지도 앱을 확인해주세요.",
+      "deliveryDesc": "배달의민족 앱/웹에서 주문 시 아래 숙소 주소를 복사하여 붙여넣으세요.",
+      "photoPending": "사진 준비 중입니다.",
+      "airbnbBtn": "Airbnb 메시지 보내기",
+      "laundryMap": "코인세탁방 지도 ↗"
+    },
+    "en": {
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "mapTitle": "📍 Map / Directions",
+      "openBaemin": "Open Baemin",
+      "viewMap": "View Map ↗",
+      "copied": "Copied!",
+      "copyAddr": "Copy Address",
+      "bosuStop": "Bosu Stop Map ↗",
+      "bupyeongStop": "Bupyeong Stop Map ↗",
+      "password": "Password",
+      "footer": "Guest Guide · Please contact us via Airbnb messages.",
+      "placesNote": "Please double check transit routes and business hours on Google Maps before departure.",
+      "deliveryDesc": "Please copy the delivery address below when ordering food.",
+      "photoPending": "Photo coming soon.",
+      "airbnbBtn": "Open Airbnb Messages",
+      "laundryMap": "Laundromat Map ↗"
+    },
+    "ja": {
+      "checkIn": "チェックイン",
+      "checkOut": "チェックアウト",
+      "mapTitle": "📍 ルート案内",
+      "openBaemin": "Baeminを開く",
+      "viewMap": "地図で確認 ↗",
+      "copied": "コピー完了!",
+      "copyAddr": "住所をコピー",
+      "bosuStop": "宝水交差点 バス停 ↗",
+      "bupyeongStop": "富平市場 バス停 ↗",
+      "password": "パスワード",
+      "footer": "Guest Guide · Airbnbメッセージをご利用ください。",
+      "placesNote": "営業時間や運行状況は現地の事情により変動する場合がありますので、事前に地図アプリ等でご確認ください。",
+      "deliveryDesc": "出前注文の際は、下記の住所をコピーしてご利用ください。",
+      "photoPending": "写真は準備中です。",
+      "airbnbBtn": "Airbnbメッセージを送る",
+      "laundryMap": "コインランドリー 地図 ↗"
+    },
+    "zh": {
+      "checkIn": "入住时间",
+      "checkOut": "退房时间",
+      "mapTitle": "📍 地图路线",
+      "openBaemin": "打开Baemin",
+      "viewMap": "查看地图 ↗",
+      "copied": "复制成功!",
+      "copyAddr": "复制地址",
+      "bosuStop": "宝水十字路口公交站 ↗",
+      "bupyeongStop": "富平市场公交站 ↗",
+      "password": "密码",
+      "footer": "Guest Guide · 请通过Airbnb消息联系。",
+      "placesNote": "营业时间及交通路况可能有所变动，建议出行前在地图App上确认最新路线。",
+      "deliveryDesc": "点外卖时，请复制并使用下方填写的住宿地址。",
+      "photoPending": "照片准备中。",
+      "airbnbBtn": "发送Airbnb消息",
+      "laundryMap": "自助洗衣店地图 ↗"
+    }
+  }
+}

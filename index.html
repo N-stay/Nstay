@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N STAY · Guest Guide</title>
+<style>
+:root{
+  --bg:#f8f9fa;--card-bg:#ffffff;--text-main:#1e293b;--text-sub:#64748b;
+  --primary:#0f172a;--accent:#2563eb;--gold:#d97706;--border:#e2e8f0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text-main);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:auto;background:var(--card-bg);min-height:100vh;box-shadow:0 0 25px rgba(0,0,0,0.05)}
+
+/* Top Header */
+header.top{background:var(--primary);color:#fff;padding:32px 24px 24px}
+.brand{display:flex;justify-content:space-between;align-items:center}
+.ey{font-size:11px;color:#94a3b8;letter-spacing:.15em;font-weight:600;text-transform:uppercase}
+.brand h1{font-size:28px;font-weight:800;margin:6px 0 2px;letter-spacing:-0.5px}
+.sub{font-size:13px;color:#cbd5e1;font-weight:400}
+.logo{width:48px;height:48px;border:1px solid #334155;background:#1e293b;border-radius:14px;display:grid;place-items:center;font-size:20px;font-weight:700;color:#f8fafc}
+.langs{display:flex;gap:6px;margin-top:20px;overflow-x:auto;padding-bottom:2px}
+.langs button{border:1px solid #334155;background:#1e293b;color:#94a3b8;border-radius:20px;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s}
+.langs button.on{background:#fff;color:var(--primary);font-weight:600;border-color:#fff}
+
+/* Hero Box */
+.hero{padding:20px 20px 10px}
+.heroBox{background:linear-gradient(145deg, #1e293b, #0f172a);color:#fff;border-radius:20px;padding:24px;box-shadow:0 10px 20px rgba(15,23,42,0.08)}
+.heroBox h2{margin:0 0 6px;font-size:20px;font-weight:700}
+.heroBox p{margin:0;color:#94a3b8;font-size:13px;line-height:1.5}
+.quick{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
+.quick>*{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:#fff;border-radius:12px;padding:12px 8px;text-align:center;text-decoration:none;display:block}
+.quick b{font-size:13px;display:block}
+.quick small{display:block;color:#94a3b8;font-size:10px;margin-top:2px}
+
+/* Sticky Navigation */
+.nav-wrap{position:sticky;top:0;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);z-index:100;border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.nav{padding:12px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{background:#f1f5f9;border:1px solid var(--border);border-radius:20px;padding:7px 13px;font-size:12px;cursor:pointer;color:var(--text-main);white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
+.nav button:active{background:#e2e8f0}
+
+/* Sections */
+section{margin:16px 20px;border:1px solid var(--border);border-radius:18px;padding:22px;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.02)}
+section h2{font-size:17px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;color:var(--primary);border-bottom:1.5px solid #f1f5f9;padding-bottom:10px}
+.item{border-top:1px solid #f1f5f9;padding:11px 0}
+.item:first-of-type{border-top:0;padding-top:0}
+.item b{font-size:13px;color:#334155}
+.item p{margin:4px 0 0;color:var(--text-sub);font-size:12px;line-height:1.55}
+
+/* Wi-Fi */
+.wifi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.wifi>div{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:12px}
+.wifi b{display:block;font-size:13px;color:var(--primary);word-break:break-all}
+.wifi small{display:block;color:var(--text-sub);font-size:10px;margin-top:2px}
+
+/* Bus Links */
+.bus-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.bus-btn{background:#f1f5f9;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:11px;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.bus-btn:hover{background:#e2e8f0}
+
+/* Cards (Food & Places) */
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.card-item{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,0.02)}
+.card-thumb{width:100%;height:125px;background:#f1f5f9;overflow:hidden;position:relative}
+.card-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.card-thumb:hover img{transform:scale(1.04)}
+.card-thumb .fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;background:#e2e8f0;color:#64748b;font-size:11px;font-weight:600}
+.card-body{padding:12px;flex-grow:1;display:flex;flex-direction:column;justify-content:space-between}
+.card-body h3{font-size:13px;font-weight:700;margin-bottom:4px;color:#1e293b}
+.card-body p{font-size:11px;color:var(--text-sub);line-height:1.45;margin-bottom:10px}
+.card-body a{font-size:11px;color:var(--accent);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:3px}
+
+/* Guide Image Boxes */
+.guide-photo-box{margin-top:14px;border:1px dashed var(--border);border-radius:14px;padding:8px;background:#fcfcfd}
+.guide-photo{aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#f1f5f9;position:relative;display:flex;align-items:center;justify-content:center}
+.guide-photo img{width:100%;height:100%;object-fit:cover}
+.guide-photo .ph{text-align:center;color:#94a3b8;font-size:11px;padding:12px;line-height:1.5}
+
+/* Delivery Box */
+.black{background:var(--primary);color:#fff;border-radius:14px;padding:18px;margin-top:12px}
+.black p{font-size:12px;color:#cbd5e1;margin:6px 0 12px;line-height:1.5}
+.addr-box{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px;margin:10px 0 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.addr-text{font-size:12px;color:#fff;font-weight:600;word-break:break-all}
+.copy-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer;white-space:nowrap}
+.copy-btn:hover{background:rgba(255,255,255,0.3)}
+.btn{display:inline-block;background:#fff;color:var(--primary);border-radius:10px;padding:9px 14px;font-size:11px;font-weight:700;text-decoration:none}
+.btn.gold{background:var(--gold);color:#fff;width:100%;text-align:center;box-sizing:border-box;margin-top:10px}
+.note{background:#f8fafc;border-left:3px solid #64748b;padding:10px 12px;margin-top:12px;font-size:11px;color:var(--text-sub);border-radius:0 8px 8px 0}
+footer{text-align:center;color:var(--text-sub);font-size:11px;padding:30px 20px 50px}
+
+@media(max-width:440px){
+  .quick{grid-template-columns:1fr}
+  .cards-grid{grid-template-columns:1fr}
+  .card-thumb{height:150px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div>
+        <div class="ey" id="ey"></div>
+        <h1 id="title"></h1>
+        <p class="sub" id="sub"></p>
+      </div>
+      <div class="logo">N</div>
+    </div>
+    <div class="langs">
+      <button data-lang="ko">🇰🇷 한국어</button>
+      <button data-lang="en">🇺🇸 English</button>
+      <button data-lang="ja">🇯🇵 日本語</button>
+      <button data-lang="zh">🇨🇳 中文</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="heroBox">
+      <h2>N STAY</h2>
+      <p id="intro"></p>
+      <div class="quick">
+        <div><b id="ci"></b><small id="cil"></small></div>
+        <div><b id="co"></b><small id="col"></small></div>
+        <a id="map" target="_blank"><b id="mapTitle"></b><small id="maps"></small></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-wrap">
+    <nav class="nav" id="nav"></nav>
+  </div>
+
+  <main id="content"></main>
+
+  <footer>
+    <b>N STAY</b> · BUSAN<br>
+    <span id="foot"></span>
+  </footer>
+</div>
+
+<script>
+/* =========================================================
+   N STAY CONFIG — 실제 숙소 정보 및 파일 경로
+   ========================================================= */
+const CONFIG = {
+  name: "N STAY",
+  area: "NAMPO · BUPYEONG · BUSAN",
+  address: {
+    ko: "부산 중구 보수대로44번길 25 3층",
+    en: "3F, 25, Bosu-daero 44beon-gil, Jung-gu, Busan",
+    ja: "釜山 中区 宝水大路44番ギル 25 3階",
+    zh: "釜山广域市中区宝水大路44号街25号 3层"
+  },
+  checkIn: "15:00",
+  checkOut: "11:00",
+  wifiName: "N STAY Wi-Fi",
+  wifiPassword: "CHANGE-ME",
+  airbnbUrl: "", // 에어비앤비 예약 링크
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=Busan+Jung-gu+Bosu-daero-44beon-gil+25",
+  baeminUrl: "https://www.baemin.com/en/global",
+  
+  // 버스 정류장 구글 지도 링크
+  busStops: {
+    bosu: "https://www.google.com/maps/search/?api=1&query=보수사거리+버스정류장+부산",
+    bupyeong: "https://www.google.com/maps/search/?api=1&query=부평시장+버스정류장+부산"
+  },
+
+  photos: {
+    acRemote: "images/ac_remote.jpg",       // 에어컨 리모컨
+    waterHeater: "images/water_heater.jpg", // 온수/보일러 조절기
+    trash: "images/trash.jpg",               // 분리수거
+    safety: "images/safety.jpg"              // 소방/안전시설
+  }
+};
+
+const TEXT = {
+ko: {
+  title: "N STAY에 오신 것을 환영합니다",
+  sub: "보수동 책방골목과 부평깡통시장 바로 앞 안락한 숙소",
+  intro: "숙소 이용 방법, 와이파이, 대중교통, 추천 맛집 및 관광지 안내를 한곳에서 확인하세요.",
+  menu: ["숙소 안내", "Wi-Fi", "교통 & 정류장", "주변 추천 맛집", "부산 명소 & 근교", "에어컨 & 리모컨", "주방", "욕실 & 온수사용", "쓰레기 분리수거", "안전", "배달 안내", "체크아웃", "Airbnb 문의"],
+  data: [
+    ["🏠", "숙소 안내", [
+      ["입구 및 보안", "외출 시 도어록이 완전히 닫히고 잠겼는지 꼭 확인해주세요."],
+      ["조용한 시간 (Quiet Hours)", "22:00 ~ 08:00에는 이웃 주민을 위해 큰 소음이나 음악을 삼가주세요."],
+      ["금연 안내", "실내 전체는 절대 금연 구역입니다 (전자담배 포함)."]
+    ]],
+    ["📶", "Wi-Fi 안내", [
+      ["접속 정보", "숙소 내 초고속 인터넷이 무료로 제공됩니다. 아래 비밀번호를 확인해주세요."]
+    ]],
+    ["🚌", "대중교통 & 버스 정류장", [
+      ["가까운 버스 정류장", "도보 2~3분 거리에 '보수사거리' 및 '부평시장' 정류장이 위치해 있습니다."],
+      ["주요 버스 노선", "부산역(81, 40, 103번), 서면/전포(81번 직통 약 25분), 해운대(1003번 급행)."],
+      ["지하철 (도시철도)", "부산 1호선 '자갈치역' 3번 출구 또는 '토성역'에서 도보 약 7~9분 거리입니다."],
+      ["부산역 이동 팁", "부산역까지 택시로 약 10분 소요되며(기본요금 수준), 버스로도 환승 없이 이동 가능합니다."]
+    ]],
+    ["🍽️", "호스트 추천 주변 맛집", [
+      ["맛집 거리 안내", "부평깡통시장 야시장, 족발골목, 전통 돼지국밥, 밀면 노포가 모두 도보권에 있습니다."]
+    ]],
+    ["📍", "부산 명소 & 추천 여행지", [
+      ["원도심 도보 코스", "보수동 책방골목 → 부평깡통시장 → 국제시장 → BIFF광장 → 자갈치시장 (도보권)"],
+      ["동부산 및 카페거리", "전포 카페거리, 광안리 해변, 해운대 블루라인파크까지 환승 또는 직통 교통편이 편리합니다."]
+    ]],
+    ["❄️", "에어컨 & 리모컨", [
+      ["에어컨 사용법", "리모컨 POWER 버튼 → COOL(냉방) 모드 → 적정 온도(24~26도) 설정"],
+      ["외출 시 주의", "외출 시에는 에너지 절약과 안전을 위해 에어컨과 조명을 반드시 꺼주세요."]
+    ]],
+    ["🍳", "주방 안내", [
+      ["인덕션 조리", "사용 후 전원을 끄고 상판 잔열에 주의하세요. 조리 중 자리를 비우지 마세요."],
+      ["식기 및 조리기구", "사용하신 식기는 설거지 후 원래 자리에 정돈 부탁드립니다."],
+      ["전자레인지", "은박지 및 금속 용기는 화재 위험이 있으니 절대 넣지 마세요."]
+    ]],
+    ["🚿", "욕실 & 온수 사용법", [
+      ["온수 사용", "벽면에 위치한 보일러 조절기에서 '온수전용' 또는 '난방/온수' 버튼이 켜져 있는지 확인 후 사용해주세요."],
+      ["배수 관리", "배수구가 막히지 않도록 머리카락이나 이물질은 휴지통에 버려주세요."]
+    ]],
+    ["🗑️", "쓰레기 & 분리수거", [
+      ["일반 쓰레기", "제공된 종량제 봉투에 담아 입구를 묶어주세요."],
+      ["재활용 분리수거", "플라스틱, 캔, 유리병, 종이는 물로 헹군 후 분리해주세요."],
+      ["음식물 쓰레기", "물기를 최대한 뺀 후 싱크대 전용 음식물 쓰레기통에 담아주세요."]
+    ]],
+    ["🚨", "안전 & 응급상황", [
+      ["응급 연락처", "화재/구급 119, 범죄/도난 112"],
+      ["비상 장비", "현관 및 주방 인근 소화기와 비상 대피 경로를 미리 확인해두세요."]
+    ]],
+    ["🍔", "배달 음식 안내", [
+      ["배달 주소", "배달 주문 시 아래 3층 주소를 그대로 입력해 주세요."],
+      ["배달앱 사용", "외국인 게스트는 배달의민족 글로벌(영문) 페이지를 간편하게 이용할 수 있습니다."]
+    ]],
+    ["🕚", "체크아웃 안내", [
+      ["체크아웃 시간", "오전 11:00까지 퇴실을 완료해주세요."],
+      ["퇴실 전 점검", "에어컨/난방 OFF, 전등 소등, 창문 및 문 잠김 확인 후 에어비앤비 메시지로 알려주세요."]
+    ]],
+    ["💬", "Airbnb 문의", [
+      ["문의 방식", "머무시는 동안 문의사항이 있으시면 언제든지 에어비앤비 메시지로 연락 주세요."]
+    ]]
+  ]
+},
+en: {
+  title: "Welcome to N STAY",
+  sub: "Cozy stay near Bosu-dong Book Street & Bupyeong Market",
+  intro: "Instructions for house rules, Wi-Fi, transit, recommended restaurants, and Busan travel guide.",
+  menu: ["House Guide", "Wi-Fi", "Transit & Bus", "Local Food", "Busan Highlights", "AC & Remote", "Kitchen", "Bathroom & Hot Water", "Trash & Recycle", "Safety", "Food Delivery", "Check-out", "Airbnb Contact"],
+  data: [
+    ["🏠", "House Guide", [
+      ["Entrance & Lock", "Please ensure the electronic door lock is securely locked whenever leaving."],
+      ["Quiet Hours", "Please keep noise low between 22:00 and 08:00 for the neighbors."],
+      ["No Smoking", "Strictly no smoking inside the premises (including e-cigarettes)."]
+    ]],
+    ["📶", "Wi-Fi Info", [
+      ["High-speed Wi-Fi", "Free high-speed Wi-Fi is available. Check the password below."]
+    ]],
+    ["🚌", "Transit & Bus Stops", [
+      ["Nearby Bus Stops", "2~3 mins walk to 'Bosu Intersection' or 'Bupyeong Market' bus stop."],
+      ["Key Bus Lines", "Busan Station (No. 81, 40, 103), Seomyeon/Jeonpo (No. 81 direct, ~25m), Haeundae (No. 1003 express)."],
+      ["Subway (Metro)", "Approx. 7~9 mins walk to Jagalchi Station or Toseong Station (Line 1)."],
+      ["Taxi Fare", "Only about 10 mins by taxi from Busan KTX Station (~₩5,000-6,000)."]
+    ]],
+    ["🍽️", "Recommended Local Food", [
+      ["Food Alleys", "Bupyeong Night Market street foods, Jokbal alley, pork soup, and Milmyeon are all within walking distance."]
+    ]],
+    ["📍", "Busan Highlights & Day Trips", [
+      ["Walking Route", "Bosu Book Alley → Bupyeong Night Market → Gukje Market → BIFF Square → Jagalchi Market."],
+      ["Trendy & Beaches", "Easily reach Jeonpo Cafe Street, Gwangalli Beach, and Haeundae via bus or subway."]
+    ]],
+    ["❄️", "Air Conditioning & Remote", [
+      ["How to Use", "Press POWER → Select COOL mode ❄️ → Set to 24~26°C."],
+      ["Energy Saving", "Please turn off the AC and lights whenever you step out."]
+    ]],
+    ["🍳", "Kitchen & Cooking", [
+      ["Induction Cooktop", "Turn off after cooking. Beware of hot surface."],
+      ["Dishes", "Please wash used cookware/dishes and return them to the shelf."],
+      ["Microwave", "Never heat aluminum foil or metalware in the microwave."]
+    ]],
+    ["🚿", "Bathroom & Hot Water", [
+      ["Hot Water", "Please ensure the 'Hot Water (온수)' mode is active on the boiler wall controller before showering."],
+      ["Drain Care", "Do not flush wet wipes or hair down the drain."]
+    ]],
+    ["🗑️", "Trash & Recycling", [
+      ["General Waste", "Use the designated trash bag provided."],
+      ["Recycling", "Rinse and separate plastic bottles, cans, glass, and paper."],
+      ["Food Waste", "Drain moisture completely and place in the small food waste bin."]
+    ]],
+    ["🚨", "Safety & Emergency", [
+      ["Emergency Lines", "Fire & Medical: 119 | Police: 112"],
+      ["Safety Gear", "Fire extinguisher is placed near the entrance/kitchen."]
+    ]],
+    ["🍔", "Food Delivery", [
+      ["Delivery Address", "Please use the 3rd floor address below when ordering food."],
+      ["Baemin Global", "Order directly in English using Baemin Global web/app."]
+    ]],
+    ["🕚", "Check-out", [
+      ["Check-out Time", "Please complete check-out by 11:00 AM."],
+      ["Before Leaving", "Turn off AC/lights, close windows, lock the door, and send us a message on Airbnb."]
+    ]],
+    ["💬", "Airbnb Contact", [
+      ["Contact Host", "Feel free to message us on Airbnb anytime during your stay!"]
+    ]]
+  ]
+},
+ja: {
+  title: "N STAYへようこそ",
+  sub: "宝水洞本屋通りと富平カントン市場すぐそばの快適な宿",
+  intro: "宿泊案内、Wi-Fi、交通アクセス、おすすめグルメ、釜山観光案内をまとめています。",
+  menu: ["宿泊案内", "Wi-Fi", "交通・バス", "周辺グルメ", "釜山名所・遠出", "エアコンとリモコン", "キッチン", "浴室・お湯の使い方", "ゴミの分別", "安全案内", "デリバリー", "チェックアウト", "Airbnb連絡"],
+  data: [
+    ["🏠", "宿泊案内", [
+      ["施錠の確認", "外出時は電子ロックが確実に施錠されているかご確認ください。"],
+      ["静かな時間", "22:00〜08:00の間は近隣への配慮のため静かにお過ごしください。"],
+      ["完全禁煙", "電子タバコを含め室内は完全禁煙です。"]
+    ]],
+    ["📶", "Wi-Fi案内", [
+      ["接続情報", "高速無料Wi-Fiをご利用いただけます。以下をご確認ください。"]
+    ]],
+    ["🚌", "公共交通・バス停", [
+      ["最寄りのバス停", "徒歩2〜3分に「宝水交差点」および「富平市場」バス停があります。"],
+      ["主要路線", "釜山駅（81、40、103番）、西面・田浦（81番 直通約25分）、海雲台（1003番 急行）。"],
+      ["地下鉄", "釜山地下鉄1号線「チャガルチ駅」3番出口、または「土城駅」から徒歩約7〜9分です。"],
+      ["釜山駅から", "タクシーで約10分、基本料金圏内です。"]
+    ]],
+    ["🍽️", "おすすめ周辺グルメ", [
+      ["グルメ情報", "富平市場の屋台、豚足通り、名物テジクッパやミルミョンがすべて徒歩圏内です。"]
+    ]],
+    ["📍", "釜山名所・遠出スポット", [
+      ["旧市街コース", "宝水洞本屋通り → カントン市場 → 国際市場 → BIFF広場 → チャガルチ市場（徒歩圏内）"],
+      ["人気エリア", "田浦カフェ通り、広安里、海雲台へもバスや地下鉄で快適にアクセスできます。"]
+    ]],
+    ["❄️", "エアコン・リモコン", [
+      ["使い方", "電源 → COOL(冷房) → 24〜26度に設定してください。外出時はOFFをお願いします。"]
+    ]],
+    ["🍳", "キッチン", [
+      ["調理", "使用後の食器は洗い、電子レンジには金属類を入れないでください。"]
+    ]],
+    ["🚿", "浴室・お湯の使い方", [
+      ["給湯", "壁面のボイラーパネルで「온수(お湯)」ランプが点灯していることを確認してご利用ください。"]
+    ]],
+    ["🗑️", "ゴミの分別", [
+      ["分別", "一般ゴミ、ビン・缶・ペットボトル、生ゴミの分別にご協力ください。"]
+    ]],
+    ["🚨", "安全・緊急時", [
+      ["緊急連絡先", "火災・救急 119 / 警察 112"]
+    ]],
+    ["🍔", "出前（デリバリー）", [
+      ["住所", "出前をご注文の際は、下記の3階の住所をご入力ください。"]
+    ]],
+    ["🕚", "チェックアウト", [
+      ["退室時間", "午前11:00までに退室をお願いいたします。退室後はメッセージでお知らせください。"]
+    ]],
+    ["💬", "Airbnb連絡", [
+      ["お問い合わせ", "滞在中のご質問はいつでもAirbnbメッセージでお送りください。"]
+    ]]
+  ]
+},
+zh: {
+  title: "欢迎入住 N STAY",
+  sub: "邻近宝水洞旧书街与富平罐头市场的舒适住宿",
+  intro: "在这里查看房间设施、Wi-Fi、交通指引、特色美食及釜山旅行推荐。",
+  menu: ["住宿指南", "Wi-Fi", "交通与公交", "周边美食", "釜山景点推荐", "空调与遥控器", "厨房指南", "浴室与热水", "垃圾分类", "安全说明", "外卖指南", "退房指南", "房东联系"],
+  data: [
+    ["🏠", "住宿指南", [
+      ["门锁安全", "外出时请确认电子门锁已完全锁好。"],
+      ["安静时间", "22:00至08:00请勿制造噪音，保持安静。"],
+      ["室内禁烟", "包括电子烟在内，全室内严禁吸烟。"]
+    ]],
+    ["📶", "Wi-Fi 信息", [
+      ["免费无线网", "提供高速无线网络，连接信息请看下方。"]
+    ]],
+    ["🚌", "公共交通与公交站", [
+      ["附近公交站", "步行2~3分钟可达“宝水十字路口”及“富平市场”公交站。"],
+      ["主要路线", "直达釜山站（81、40、103路）、西面/田浦（81路直达约25分钟）、海云台（1003路快线）。"],
+      ["地铁", "釜山地铁1号线“札嘎其站”3号出口或“土城站”步行约7~9分钟。"],
+      ["从釜山站前往", "乘坐出租车约10分钟（仅需起步价左右）。"]
+    ]],
+    ["🍽️", "房东推荐周边美食", [
+      ["美食分布", "富平罐头夜市、猪蹄街、地道猪肉汤饭及小麦冷面均在步行范围内。"]
+    ]],
+    ["📍", "釜山景点与周边", [
+      ["老城步行程", "宝水洞旧书街 → 富平夜市 → 国际市场 → BIFF广场 → 札嘎其海鲜市场（均可步行）"],
+      ["热门街区与海滩", "乘坐公交或地铁可轻松到达田浦咖啡街、广安里海水浴场及海云台。"]
+    ]],
+    ["❄️", "空调与遥控器", [
+      ["使用方法", "按电源键 → 选择 COOL(制冷) → 设为24~26度。外出时请随手关机。"]
+    ]],
+    ["🍳", "厨房使用", [
+      ["餐具整理", "用完请清洗并归位。请勿将金属放入微波炉。"]
+    ]],
+    ["🚿", "浴室与热水使用", [
+      ["热水说明", "淋浴前请确认墙上的锅炉控制器“热水(온수)”指示灯已开启。"]
+    ]],
+    ["🗑️", "垃圾分类", [
+      ["分类原则", "请分别投放一般垃圾、厨余垃圾和可回收瓶罐纸类。"]
+    ]],
+    ["🚨", "安全与急救", [
+      ["紧急电话", "火警/救护车：119 | 报警：112"]
+    ]],
+    ["🍔", "外卖指南", [
+      ["配送地址", "点外卖时请直接填写下方3层地址。"]
+    ]],
+    ["🕚", "退房指南", [
+      ["退房时间", "请于上午 11:00 前完成退房，离开后请通过Airbnb消息告知。"]
+    ]],
+    ["💬", "房东联系", [
+      ["随时联系", "住宿期间遇到任何问题，欢迎通过Airbnb消息与我们联系。"]
+    ]]
+  ]
+}
+};
+
+/* 음식점 데이터 */
+const FOODS = {
+ko: [
+  ["부평깡통시장 야시장", "유부전골, 씨앗호떡, 다채로운 글로벌 길거리 야시장 음식 (도보 3분)", "https://www.google.com/maps/search/?api=1&query=부평깡통야시장", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"],
+  ["남포동 원조 냉채족발", "새콤하고 알싸한 해파리 겨자소스로 유명한 부산 명물 족발거리 (도보 5분)", "https://www.google.com/maps/search/?api=1&query=원조한양족발+남포동", "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80"],
+  ["부산 돼지국밥 (양산집/신창국밥)", "부평시장 안 70년 전통의 맑고 깊은 국물이 일품인 국밥 명가 (도보 4분)", "https://www.google.com/maps/search/?api=1&query=양산집+부평시장", "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80"],
+  ["부산 원조 밀면 (할매가야밀면)", "살얼음 동동 시원하고 감칠맛 넘치는 부산 대표 냉면/밀면 (도보 8분)", "https://www.google.com/maps/search/?api=1&query=할매가야밀면+남포동", "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80"],
+  ["자갈치 백화양곱창", "자갈치역 앞, 연탄불 위에서 구워주는 곱창 노포 (도보 9분)", "https://www.google.com/maps/search/?api=1&query=백화양곱창", "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80"],
+  ["보수동 책방골목 북카페", "골목길 고즈넉한 정취 속에서 커피와 디저트를 즐길 수 있는 카페들", "https://www.google.com/maps/search/?api=1&query=보수동책방골목+카페", "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80"]
+],
+en: [
+  ["Bupyeong Night Market", "Fried Tofu Bag, Seed Hotteok & vibrant street foods (3 min walk)", "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"],
+  ["Chilled Jokbal Alley", "Famous braised pig's trotters served cold with tangy mustard dressing (5 min walk)", "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan", "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80"],
+  ["Busan Pork Soup (Dwaeji Gukbap)", "Traditional rich pork broth soup with rice, 70-year historic shop (4 min walk)", "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan", "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80"],
+  ["Halmae Gaya Milmyeon", "Busan's iconic cold wheat noodles in chilled savory broth (8 min walk)", "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon", "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80"],
+  ["Baekhwa Yang-gopchang", "Authentic historic charcoal-grilled beef tripe BBQ experience by Jagalchi (9 min walk)", "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang", "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80"],
+  ["Bosu Book Alley Cafes", "Cozy book cafes and bakeries tucked inside quiet historic bookstores alley", "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe", "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80"]
+],
+ja: [
+  ["富平カントン夜市場", "油揚げうどん、シアホットクなど多彩な屋台グルメ（徒歩3分）", "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"],
+  ["南浦洞 豚足通り", "さっぱりした特製マスタードソースの元祖・冷製豚足（徒歩5分）", "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan", "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80"],
+  ["釜山デジクッパ（梁山チプ）", "富平市場内、70年の伝統を誇る澄んだ極上スープの豚クッパ（徒歩4分）", "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan", "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80"],
+  ["ハルメ伽耶ミルミョン", "冷たい氷スープとモチモチ麺が絶品の釜山名物ミルミョン（徒歩8分）", "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon", "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80"],
+  ["百花ヤンコプチャン", "練炭の香りと活気があふれる老舗のホルモン焼き専門店（徒歩9分）", "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang", "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80"],
+  ["宝水洞ブックカフェ", "古書街の落ち着いた雰囲気の中で楽しむ珈琲とスイーツ", "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe", "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80"]
+],
+zh: [
+  ["富平罐头夜市", "油豆腐包、糖饼等海量特色街头小吃（步行3分钟）", "https://www.google.com/maps/search/?api=1&query=Bupyeong+Kkangtong+Market", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"],
+  ["南浦洞猪蹄街", "酸爽芥末酱风味的釜山代表性凉拌猪蹄（步行5分钟）", "https://www.google.com/maps/search/?api=1&query=Hanyang+Jokbal+Busan", "https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80"],
+  ["釜山猪肉汤饭（梁山家）", "富平市场内传承70年的清爽浓郁正宗猪肉汤饭（步行4分钟）", "https://www.google.com/maps/search/?api=1&query=Yangsan-jip+Busan", "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=700&auto=format&fit=crop&q=80"],
+  ["奶奶伽倻小麦冷面", "清凉爽口的碎冰骨汤与秘制辣酱小麦面（步行8分钟）", "https://www.google.com/maps/search/?api=1&query=Halmae+Gaya+Milmyeon", "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=700&auto=format&fit=crop&q=80"],
+  ["百花烤牛肠", "札嘎其市场旁极具烟火气的炭火炭烤牛肠老字号（步行9分钟）", "https://www.google.com/maps/search/?api=1&query=Baekhwa+Yang-gopchang", "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=700&auto=format&fit=crop&q=80"],
+  ["宝水洞旧书街咖啡厅", "在静谧的书香巷弄中品尝手冲咖啡与甜点", "https://www.google.com/maps/search/?api=1&query=Bosu-dong+Book+Street+Cafe", "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=700&auto=format&fit=crop&q=80"]
+]
+};
+
+/* 관광 명소 데이터 */
+const PLACES = {
+ko: [
+  ["전포 카페거리 & 서면", "트렌디한 감성 카페와 소품샵이 모인 핫플레이스<br><b>🚌 이동:</b> 숙소 앞 81번 버스 직통 (약 25분) 또는 지하철 1호선 탑승", "https://www.google.com/maps/search/?api=1&query=전포카페거리", "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&auto=format&fit=crop&q=80"],
+  ["광안리 해수욕장 & 광안대교", "아름다운 광안대교 오션뷰, 야경 및 주말 드론쇼 명소<br><b>🚇 이동:</b> 자갈치역(1호선) → 서면역 환승(2호선) → 광안역 (약 40분)", "https://www.google.com/maps/search/?api=1&query=광안리해수욕장", "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&auto=format&fit=crop&q=80"],
+  ["해운대 해변열차 (블루라인파크)", "해안 절벽을 따라 달리는 스카이캡슐과 해변열차<br><b>🚌 이동:</b> 자갈치역 인근에서 1003번 급행버스 직통 탑승 (약 55분)", "https://www.google.com/maps/search/?api=1&query=해운대블루라인파크+미포정거장", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80"],
+  ["흰여울문화마을 (영도)", "절벽 위 바다 산책로와 파노라마 오션뷰 카페<br><b>🚕 이동:</b> 숙소에서 택시로 약 12분 (약 7,000원) 또는 남포역 버스 환승", "https://www.google.com/maps/search/?api=1&query=흰여울문화마을", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80"],
+  ["감천문화마을", "알록달록 파스텔톤 계단식 산복도로 예술마을<br><b>🚕 이동:</b> 숙소에서 택시로 약 7분 또는 토성역 6번 출구에서 사하1-1 마을버스", "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan", "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=700&auto=format&fit=crop&q=80"],
+  ["부평깡통시장 & 국제시장", "숙소 도보 2~5분! 부산 원도심의 활기와 전통을 느낄 수 있는 대표 시장<br><b>🚶 이동:</b> 숙소 도보 3분", "https://www.visitbusan.net/kr/index.do?lang_cd=ko&menuCd=DOM_000000301003001000&uc_seq=400", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"]
+],
+en: [
+  ["Jeonpo Cafe Street & Seomyeon", "Trendy cafes, dessert spots, and lifestyle boutiques.<br><b>🚌 Transit:</b> Bus No. 81 direct from house (~25 mins) or Subway Line 1.", "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street", "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&auto=format&fit=crop&q=80"],
+  ["Gwangalli Beach & Bridge", "Iconic sandy beach with Diamond Bridge night lights & drone shows.<br><b>🚇 Transit:</b> Line 1 Jagalchi → Transfer Line 2 at Seomyeon → Gwangan Station (~40 mins).", "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach", "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&auto=format&fit=crop&q=80"],
+  ["Haeundae Blueline Park", "Scenic coastal Sky Capsule and beach train along cliffs.<br><b>🚌 Transit:</b> Express Bus 1003 direct from near Jagalchi (~55 mins).", "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80"],
+  ["Huinnyeoul Culture Village", "Cliffside village overlooking open ocean with seaside cafes.<br><b>🚕 Transit:</b> Taxi ~12 mins (~₩7,000) or local bus from Nampo Station.", "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80"],
+  ["Gamcheon Culture Village", "Vibrant terraced colorful village on mountain hillside.<br><b>🚕 Transit:</b> Taxi ~7 mins or village bus Saha 1-1 from Toseong Station.", "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan", "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=700&auto=format&fit=crop&q=80"],
+  ["Bupyeong & Gukje Market", "Historic lively bazaars with night market food right next door.<br><b>🚶 Transit:</b> 3 mins walk.", "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"]
+],
+ja: [
+  ["田浦カフェ通り・西面", "最新トレンドのカフェや雑貨屋が集まる人気エリア。<br><b>🚌 アクセス:</b> 宿前の81番バスで直通（約25分）または地下鉄1号線で西面駅へ。", "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street", "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&auto=format&fit=crop&q=80"],
+  ["広安里海水浴場・広安大橋", "広安大橋の絶景夜景とドローンショーが有名なビーチ。<br><b>🚇 アクセス:</b> 1号線チャガルチ駅 → 西面駅で2号線に乗換 → 広安駅下車（約40分）。", "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach", "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&auto=format&fit=crop&q=80"],
+  ["海雲台ブルーラインパーク", "海岸絶壁を走るスカイカプセルと海辺列車。<br><b>🚌 アクセス:</b> チャガルチ駅近くから1003番急行バスで直通（約55分）。", "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80"],
+  ["ヒンヨウル文化村（影島）", "海岸絶壁沿いの絶景散策路とおしゃれなカフェ。<br><b>🚕 アクセス:</b> タクシーで約12分（約7,000ウォン）または南浦駅からバス。", "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80"],
+  ["甘川文化村", "パステルカラーの家並みが広がる階段式のアート村。<br><b>🚕 アクセス:</b> タクシーで約7分、または土城駅6番出口からマウルバス。", "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan", "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=700&auto=format&fit=crop&q=80"],
+  ["富平カントン市場・国際市場", "屋台グルメと釜山情緒が楽しめる代表市場。<br><b>🚶 アクセス:</b> 徒歩3分。", "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"]
+],
+zh: [
+  ["田浦咖啡街 & 西面", "汇聚潮流独立咖啡馆与文创杂货铺的热门街区。<br><b>🚌 交通:</b> 宿前乘坐81路公交直达（约25分钟）或搭乘地铁1号线至西面站。", "https://www.google.com/maps/search/?api=1&query=Jeonpo+Cafe+Street", "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&auto=format&fit=crop&q=80"],
+  ["广安里海水浴场 & 广安大桥", "眺望广安大桥夜景与无人机表演的经典海滩。<br><b>🚇 交通:</b> 1号线札嘎其站 → 西面站换乘2号线至广安站下车（约40分钟）。", "https://www.google.com/maps/search/?api=1&query=Gwangalli+Beach", "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=700&auto=format&fit=crop&q=80"],
+  ["海云台蓝线公园（胶囊列车）", "沿着绝美海岸线悬崖行驶的天空胶囊小火车。<br><b>🚌 交通:</b> 札嘎其站旁乘坐1003路快线直达（约55分钟）。", "https://www.google.com/maps/search/?api=1&query=Haeundae+Blueline+Park", "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80"],
+  ["白浅滩文化村（影岛）", "坐落在海岸悬崖边上的海景咖啡馆散步路。<br><b>🚕 交通:</b> 乘出租车约12分钟（约7,000韩元）或从南浦站换乘公交。", "https://www.google.com/maps/search/?api=1&query=Huinnyeoul+Culture+Village", "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=700&auto=format&fit=crop&q=80"],
+  ["甘川文化村", "彩色阶梯式山坡壁画与小王子艺术村落。<br><b>🚕 交通:</b> 乘出租车约7分钟，或从土城站6号出口换乘沙下1-1社区巴士。", "https://www.google.com/maps/search/?api=1&query=Gamcheon+Culture+Village+Busan", "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Gamcheon_Culture_Village_Busan.jpg/640px-Gamcheon_Culture_Village_Busan.jpg"],
+  ["富平罐头夜市 & 国际市场", "出门即达！尽享传统市集与丰富夜市小吃。<br><b>🚶 交通:</b> 步行3分钟。", "https://www.visitbusan.net/en/index.do?lang_cd=en&menuCd=DOM_000000301003001000&uc_seq=400", "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=700&auto=format&fit=crop&q=80"]
+]
+};
+
+const UI = {
+  ko: ["체크인", "체크아웃", "📍 길찾기", "배달의민족 열기", "지도 바로가기 ↗", "복사완료!", "주소 복사", "보수사거리 정류장 지도 ↗", "부평시장 정류장 지도 ↗"],
+  en: ["Check-in", "Check-out", "📍 Map / Directions", "Open Baemin", "View Map ↗", "Copied!", "Copy Address", "Bosu Stop Map ↗", "Bupyeong Stop Map ↗"],
+  ja: ["チェックイン", "チェックアウト", "📍 ルート案内", "Baeminを開く", "地図で確認 ↗", "コピー完了!", "住所をコピー", "宝水交差点 バス停 ↗", "富平市場 バス停 ↗"],
+  zh: ["入住时间", "退房时间", "📍 地图路线", "打开Baemin", "查看地图 ↗", "复制成功!", "复制地址", "宝水十字路口公交站 ↗", "富平市场公交站 ↗"]
+};
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+function guideImg(key, label){
+  const src = CONFIG.photos[key];
+  return `
+  <div class="guide-photo-box">
+    <div class="guide-photo">
+      <img src="${esc(src)}" alt="${esc(label)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="ph" style="display:none;">
+        📷 <b>${esc(label)} 사진 안내</b><br>
+        <small style="color:#64748b;">${esc(src)} 경로에 사진 파일을 넣어주시면 표시됩니다.</small>
+      </div>
+    </div>
+  </div>`;
+}
+
+function scrollToSection(index){
+  const target = document.getElementById("s" + index);
+  if(!target) return;
+  const navWrap = document.querySelector(".nav-wrap");
+  const navHeight = navWrap ? navWrap.offsetHeight : 60;
+  const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+  window.scrollTo({
+    top: targetPosition,
+    behavior: "smooth"
+  });
+}
+
+function copyAddress(btn, text, copiedText){
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig = btn.textContent;
+    btn.textContent = copiedText;
+    setTimeout(()=>btn.textContent = orig, 2000);
+  });
+}
+
+function render(lang){
+  const d = TEXT[lang], u = UI[lang];
+  document.documentElement.lang = lang;
+  document.title = `${CONFIG.name} · Guest Guide`;
+  document.getElementById("ey").textContent = `${CONFIG.name} · ${CONFIG.area}`;
+  document.getElementById("title").textContent = d.title;
+  document.getElementById("sub").textContent = d.sub;
+  document.getElementById("intro").textContent = d.intro;
+  document.getElementById("ci").textContent = CONFIG.checkIn;
+  document.getElementById("co").textContent = CONFIG.checkOut;
+  document.getElementById("cil").textContent = u[0];
+  document.getElementById("col").textContent = u[1];
+
+  document.getElementById("mapTitle").textContent = u[2];
+  document.getElementById("maps").textContent = CONFIG.address[lang] || CONFIG.address.en;
+  document.getElementById("map").href = CONFIG.mapUrl;
+
+  document.getElementById("foot").textContent = lang==="ko"?"Guest Guide · 문의는 Airbnb 메시지를 이용해주세요.":lang==="ja"?"Guest Guide · Airbnbメッセージをご利用ください。":lang==="zh"?"Guest Guide · 请通过Airbnb消息联系。":"Guest Guide · Please contact us via Airbnb messages.";
+
+  document.getElementById("nav").innerHTML = d.menu.map((m, i) => 
+    `<button type="button" onclick="scrollToSection(${i})">${d.data[i][0]} ${esc(m)}</button>`
+  ).join("");
+
+  document.getElementById("content").innerHTML = d.data.map((sec, i) => {
+    let customHtml = "";
+
+    // 1: Wi-Fi 박스
+    if(i === 1) {
+      customHtml = `<div class="wifi">
+        <div><b>${esc(CONFIG.wifiName)}</b><small>Network (SSID)</small></div>
+        <div><b>${esc(CONFIG.wifiPassword)}</b><small>${lang==="ko"?"비밀번호":lang==="ja"?"パスワード":lang==="zh"?"密码":"Password"}</small></div>
+      </div>`;
+    }
+
+    // 2: 대중교통 정류장 지도 링크 버튼 (요청 반영)
+    if(i === 2) {
+      customHtml = `
+      <div class="bus-links">
+        <a class="bus-btn" href="${esc(CONFIG.busStops.bosu)}" target="_blank">📍 ${u[7]}</a>
+        <a class="bus-btn" href="${esc(CONFIG.busStops.bupyeong)}" target="_blank">📍 ${u[8]}</a>
+      </div>`;
+    }
+
+    // 3: 맛집 카드
+    if(i === 3) {
+      customHtml = `<div class="cards-grid">${FOODS[lang].map(f => `
+        <article class="card-item">
+          <div class="card-thumb">
+            <img src="${esc(f[3])}" alt="${esc(f[0])}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="fallback">🍽️ ${esc(f[0])}</div>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3>${esc(f[0])}</h3>
+              <p>${esc(f[1])}</p>
+            </div>
+            <a href="${esc(f[2])}" target="_blank">${u[4]}</a>
+          </div>
+        </article>
+      `).join("")}</div>`;
+    }
+
+    // 4: 부산 명소 카드
+    if(i === 4) {
+      customHtml = `<div class="cards-grid">${PLACES[lang].map(p => `
+        <article class="card-item">
+          <div class="card-thumb">
+            <img src="${esc(p[3])}" alt="${esc(p[0])}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="fallback">📍 ${esc(p[0])}</div>
+          </div>
+          <div class="card-body">
+            <div>
+              <h3>${esc(p[0])}</h3>
+              <p>${p[1]}</p>
+            </div>
+            <a href="${esc(p[2])}" target="_blank">${u[4]}</a>
+          </div>
+        </article>
+      `).join("")}</div>
+      <div class="note">${lang==="ko"?"운영시간 및 교통편은 현지 사정에 따라 달라질 수 있으니 방문 전 지도 앱을 확인해주세요.":lang==="ja"?"営業時間や運行状況は現地の事情により変動する場合がありますので、事前に地図アプリ等でご確認ください。":lang==="zh"?"营业时间及交通路况可能有所变动，建议出行前在地图App上确认最新路线。":"Please double check transit routes and business hours on Google Maps before departure."}</div>`;
+    }
+
+    // 5: 에어컨 리모컨 사진
+    if(i === 5) {
+      customHtml = guideImg("acRemote", lang==="ko"?"에어컨 리모컨 안내":lang==="ja"?"エアコンリモコンの案内":lang==="zh"?"空调遥控器说明":"AC Remote Guide");
+    }
+
+    // 7: 온수 / 보일러 조절기 사진
+    if(i === 7) {
+      customHtml = guideImg("waterHeater", lang==="ko"?"온수/보일러 조절기 사용 안내":lang==="ja"?"給湯・ボイラーの使い方":lang==="zh"?"地暖及热水控制器说明":"Water Heater Controller Guide");
+    }
+
+    // 8: 쓰레기 & 분리수거 사진
+    if(i === 8) {
+      customHtml = guideImg("trash", lang==="ko"?"분리수거 및 쓰레기 배출 안내":lang==="ja"?"ゴミの分別案内":lang==="zh"?"垃圾分类说明":"Recycling & Trash Guide");
+    }
+
+    // 9: 안전시설 사진
+    if(i === 9) {
+      customHtml = guideImg("safety", lang==="ko"?"소방 및 안전시설":lang==="ja"?"安全設備":lang==="zh"?"安全设施":"Safety Equipment");
+    }
+
+    // 10: 배달 박스 (3층 주소 표기 및 주소 복사 버튼 추가)
+    if(i === 10) {
+      const currentAddr = CONFIG.address[lang] || CONFIG.address.ko;
+      customHtml = `
+      <div class="black">
+        <b>🛵 Baemin (Global Delivery)</b>
+        <p>${lang==="ko"?"배달의민족 앱/웹에서 주문 시 아래 숙소 주소를 복사하여 붙여넣으세요.":lang==="ja"?"出前注文の際は、下記の住所をコピーしてご利用ください。":lang==="zh"?"点外卖时，请复制并使用下方填写的住宿地址。":"Please copy the delivery address below when ordering food."}</p>
+        <div class="addr-box">
+          <span class="addr-text">📍 ${esc(currentAddr)}</span>
+          <button class="copy-btn" onclick="copyAddress(this, '${esc(currentAddr)}', '${esc(u[5])}')">📋 ${u[6]}</button>
+        </div>
+        <a class="btn" href="${esc(CONFIG.baeminUrl)}" target="_blank">${u[3]} ↗</a>
+      </div>`;
+    }
+
+    // 12: Airbnb 문의 링크
+    if(i === 12 && CONFIG.airbnbUrl) {
+      customHtml = `<a class="btn gold" href="${esc(CONFIG.airbnbUrl)}" target="_blank">${lang==="ko"?"Airbnb 메시지 보내기":lang==="ja"?"Airbnbメッセージを送る":lang==="zh"?"发送Airbnb消息":"Open Airbnb Messages"} ↗</a>`;
+    }
+
+    return `
+      <section id="s${i}">
+        <h2><span>${sec[0]}</span> ${esc(sec[1])}</h2>
+        ${sec[2].map(a => `
+          <div class="item">
+            <b>${esc(a[0])}</b>
+            <p>${esc(a[1])}</p>
+          </div>
+        `).join("")}
+        ${customHtml}
+      </section>
+    `;
+  }).join("");
+}
+
+document.querySelectorAll("[data-lang]").forEach(btn => {
+  btn.onclick = () => {
+    localStorage.setItem("nStayLang", btn.dataset.lang);
+    document.querySelectorAll("[data-lang]").forEach(x => x.classList.toggle("on", x === btn));
+    render(btn.dataset.lang);
+  };
+});
+
+let savedLang = localStorage.getItem("nStayLang") || "ko";
+const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+if(activeBtn) activeBtn.classList.add("on");
+render(savedLang);
+</script>
+</body>
+</html>

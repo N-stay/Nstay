@@ -43,7 +43,26 @@
     },
     {
       "icon": "🍽️",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/up/20260908-223617-6ylhp.jpg",
+          "caption": {
+            "ko": "부평깡통시장 야시장",
+            "en": "",
+            "ja": "",
+            "zh": ""
+          }
+        },
+        {
+          "src": "images/up/20260908-223837-rvglk.jpg",
+          "caption": {
+            "ko": "남포동 원조 냉채족발",
+            "en": "",
+            "ja": "",
+            "zh": ""
+          }
+        }
+      ],
       "key": "food"
     },
     {

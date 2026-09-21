@@ -75,21 +75,12 @@
       "icon": "🚿",
       "photos": [
         {
-          "src": "images/water_heater.jpg",
+          "src": "images/up/20260921-115046-rlgbl.jpg",
           "caption": {
             "ko": "온수/보일러 조절기 사용 안내",
             "en": "Water Heater Controller Guide",
             "ja": "給湯・ボイラーの使い方",
             "zh": "地暖及热水控制器说明"
-          }
-        },
-        {
-          "src": "images/up/20260921-114936-gr3v1.jpg",
-          "caption": {
-            "ko": "",
-            "en": "",
-            "ja": "",
-            "zh": ""
           }
         }
       ],

@@ -28,7 +28,17 @@
   "sections": [
     {
       "icon": "🏠",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/up/20261001-130024-0v0dz.jpg",
+          "caption": {
+            "ko": "숙소 입구 안내",
+            "en": "",
+            "ja": "",
+            "zh": ""
+          }
+        }
+      ],
       "key": "house"
     },
     {
